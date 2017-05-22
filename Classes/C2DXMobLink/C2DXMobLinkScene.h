@@ -9,7 +9,6 @@
 #ifndef __C2DXMobLinkSample__C2DXMobLinkScene__
 #define __C2DXMobLinkSample__C2DXMobLinkScene__
 
-USING_NS_CC;
 #include <stdio.h>
 #include "C2DXMobLinkTypeDef.h"
 

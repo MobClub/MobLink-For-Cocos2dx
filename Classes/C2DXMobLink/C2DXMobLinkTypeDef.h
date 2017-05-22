@@ -9,10 +9,10 @@
 #ifndef __C2DXMobLinkSample__C2DXMobLinkTypeDef__
 #define __C2DXMobLinkSample__C2DXMobLinkTypeDef__
 
-USING_NS_CC;
-
 #include "cocos2d.h"
 #include <stdint.h>
+
+USING_NS_CC;
 
 #if COCOS2D_VERSION < 0x00030000
 
