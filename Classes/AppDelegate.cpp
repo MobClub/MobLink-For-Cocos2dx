@@ -37,6 +37,8 @@ AppDelegate::~AppDelegate()
 #endif
 }
 
+void sceneHandler(C2DXMobLinkScene *scene);
+
 // if you want a different context, modify the value of glContextAttrs
 // it will affect all platforms
 void AppDelegate::initGLContextAttrs()
@@ -58,6 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     //初始化MobLink
     C2DXMobLink::registerApp("1b8898cb51ccb");
+    C2DXMobLink::setSceneRestoreCallBack(sceneHandler);
 
     // initialize director
     auto director = Director::getInstance();
@@ -132,4 +135,27 @@ void AppDelegate::applicationWillEnterForeground() {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     C2DXMobLink::updateIntent();
 #endif
+}
+
+void sceneHandler(C2DXMobLinkScene *scene)
+{
+    log("path = %s", scene->path.c_str());
+    log("source = %s", scene->source.c_str());
+    __Dictionary *custom = scene->getCustomParams();
+
+    std::string content;
+    content += "path:"; content += scene->path.c_str(); content += "\n";
+    content += "source:"; content += scene->source.c_str(); content += "\n";
+    content += "params:\n";
+
+    DictElement *element;
+    CCDICT_FOREACH(custom, element)
+        {
+            const char *key = element -> getStrKey();
+            __String *obj = (__String*)element -> getObject();
+            log("key = %s, value = %s",key,obj -> getCString());
+            content += key; content += ":"; content += obj->getCString(); content += "\n";
+        }
+
+    MessageBox(content.c_str(), "得到场景恢复回调");
 }

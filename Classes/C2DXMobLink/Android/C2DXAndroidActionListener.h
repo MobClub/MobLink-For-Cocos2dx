@@ -17,7 +17,8 @@ private:
     // 0, 此对象是用于场景回调使用; 1, 此对象用于
     int actionType;
 
-    C2DXMobLinkCallBack callBack;
+    // 设置GetModId的回调函数
+    C2DXGetMobIdResultEvent getModIdCallBack;
 
 public:
     /**
@@ -39,16 +40,16 @@ public:
     void onError(const char* error);
 
     /**
-     * 不加注释了, 我相信还得修改
+     * 设置GetModId的回调函数, 注意只有当1 == actionType才有意义
      * @param cb
      */
-    void setCallBack(C2DXMobLinkCallBack cb);
+    void setGetModIdCallBack(C2DXGetMobIdResultEvent cb);
 
     /**
      * 不加注释了, 我相信还得修改
      * @param cb
      */
-    C2DXMobLinkCallBack getCallBack();
+    C2DXGetMobIdResultEvent getGetMoIdCallBack();
 
 };
 

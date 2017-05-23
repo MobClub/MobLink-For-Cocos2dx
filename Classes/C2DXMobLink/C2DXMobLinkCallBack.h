@@ -29,20 +29,6 @@ namespace mob
          *  @param C2DXRestoreSceneResultEvent 回调场景参数
          */
         typedef void(*C2DXRestoreSceneResultEvent) (C2DXMobLinkScene *scene);
-
-        
-        class C2DXMobLinkCallBack
-        {
-        public:
-            
-            C2DXMobLinkCallBack(){}
-            ~C2DXMobLinkCallBack(){}
-            
-            C2DXGetMobIdResultEvent mobidResultEvent;
-            C2DXRestoreSceneResultEvent sceneResultEvent;
-            
-        };
-        
     }
 }
 

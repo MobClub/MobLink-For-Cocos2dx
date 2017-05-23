@@ -36,14 +36,14 @@ namespace mob
              *
              *  @param scene 场景对象
              */
-            static void getMobId(C2DXMobLinkScene *scene);
+            static void getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback);
         
             /**
-             *  设置回调对象
+             *  设置场景还原的回调函数
              *
              *  @param callback 回调对象
              */
-            static void setRestoreCallBack(C2DXMobLinkCallBack callback);
+            static void setSceneRestoreCallBack(C2DXRestoreSceneResultEvent callback);
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
             /**

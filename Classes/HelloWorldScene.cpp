@@ -1,7 +1,7 @@
+#include <ui/UIButton.h>
 #include "HelloWorldScene.h"
-#include "SimpleAudioEngine.h"
 
-
+using namespace cocos2d::ui;
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -10,48 +10,14 @@ Scene* HelloWorld::createScene()
 void getMobIdHandler(const char * mobid)
 {
     log("result - mobid = %s", mobid);
-}
-
-void sceneHandler(C2DXMobLinkScene *scene)
-{
-    log("path = %s", scene->path.c_str());
-    log("source = %s", scene->source.c_str());
-    __Dictionary *custom = scene->getCustomParams();
-    
-    DictElement *element;
-    CCDICT_FOREACH(custom, element)
-    {
-        const char *key = element -> getStrKey();
-        __String *obj = (__String*)element -> getObject();
-        log("key = %s, value = %s",key,obj -> getCString());
-    }
-
-    MessageBox("", "得到场景恢复回调");
-
-    
+    std::string content = "mobId:";
+    content += mobid;
+    MessageBox(content.c_str(), "获取MobId的回调");
 }
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    C2DXMobLinkCallBack callback;
-    callback.mobidResultEvent = getMobIdHandler;
-    callback.sceneResultEvent = sceneHandler;
-    C2DXMobLink::setRestoreCallBack(callback);
-    
-    
-    C2DXMobLinkScene *scene = new C2DXMobLinkScene();
-    scene->path = "the path";
-    scene->source = "the source";
-
-    __Dictionary *customParams = __Dictionary::create();
-    customParams -> setObject(__String::create("999"), "Price");
-    customParams -> setObject(__String::create("1"), "Chapter");
-    customParams -> setObject(__String::create("Dragon Fire"), "ChapterName");
-    scene->setCustomParams(customParams);
-    
-    C2DXMobLink::getMobId(scene);
-    
     //////////////////////////////
     // 1. super init first
     if ( !Scene::init() )
@@ -102,7 +68,35 @@ bool HelloWorld::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    //this->addChild(sprite, 0);
+
+    auto button = Button::create();
+    button->setTitleText("GetMobId");
+    button->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    button->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED: {
+                C2DXMobLinkScene *scene = new C2DXMobLinkScene();
+                scene->path = "the path";
+                scene->source = "the source";
+
+                __Dictionary *customParams = __Dictionary::create();
+                customParams->setObject(__String::create("999"), "Price");
+                customParams->setObject(__String::create("1"), "Chapter");
+                customParams->setObject(__String::create("Dragon Fire"), "ChapterName");
+                scene->setCustomParams(customParams);
+
+                C2DXMobLink::getMobId(scene, getMobIdHandler);
+            }
+                break;
+            default:
+                break;
+        }
+    });
+    this->addChild(button);
     
     return true;
 }

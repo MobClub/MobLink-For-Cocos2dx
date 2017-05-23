@@ -289,7 +289,7 @@ NSArray* convertC2DXArrayToNSArray(C2DXArray *array)
 }
 
 #pragma mark - MobLink Interface
-static mob::moblink::C2DXMobLinkCallBack theCallBack;
+static mob::moblink::C2DXMobLinkCallBack restoreSceneCallBack;
 
 void C2DXiOSMobLink::registerApp(const char *appKey)
 {
@@ -312,14 +312,14 @@ void C2DXiOSMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
        
         if (mobid)
         {
-            theCallBack.mobidResultEvent([mobid UTF8String]);
+            restoreSceneCallBack.mobidResultEvent([mobid UTF8String]);
         }
     }];
 }
 
 void C2DXiOSMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
 {
-    theCallBack = callback;
+    restoreSceneCallBack = callback;
 }
 
 void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *source, const char *paramsStr)
@@ -332,5 +332,5 @@ void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *source, 
     NSDictionary *dict = [MOBFJson objectFromJSONString:params];
     scene -> customParams = convertNSDictToCCDict(dict);
     
-    theCallBack.sceneResultEvent(scene);
+    restoreSceneCallBack.sceneResultEvent(scene);
 }

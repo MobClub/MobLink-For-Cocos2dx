@@ -20,7 +20,7 @@ using namespace mob::moblink;
 #ifdef __cplusplus
 extern "C" {
 #endif
-    mob::moblink::C2DXMobLinkCallBack theCallBack;
+    mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack = NULL;
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ void C2DXAndroidMobLink::registerApp(const char *appKey)
 }
 
 
-void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
+void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
     JNIEnv* env = JniHelper::getEnv();
     jstring jPath = env->NewStringUTF(scene->path.c_str());
@@ -60,19 +60,14 @@ void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
     jobject jListener = newActionListener(env);
     C2DXAndroidActionListener* cxxListener = getCxxObjectFromJavaObject(env, jListener);
     cxxListener->setActionType(1);
-    cxxListener->setCallBack(theCallBack);
+    cxxListener->setGetModIdCallBack(callback);
 
     env->CallStaticVoidMethod(mi.classID, mi.methodID, jParam, jPath, jSource, jListener);
 }
 
-void C2DXAndroidMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
+void C2DXAndroidMobLink::setRestoreCallBack(C2DXRestoreSceneResultEvent callback)
 {
-    theCallBack = callback;
-}
-
-void C2DXAndroidMobLink::resorteSceneCallBack(const char *path, const char *source, const char *paramsStr)
-{
-    // TODO for what
+    restoreSceneCallBack = callback;
 }
 
 jobject C2DXAndroidMobLink::getAndroidContext(JNIEnv* env)

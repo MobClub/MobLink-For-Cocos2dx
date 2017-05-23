@@ -5,16 +5,22 @@
 #include "C2DXAndroidActionListener.h"
 #include "JSON/CCJSONConverter.h"
 
-extern mob::moblink::C2DXMobLinkCallBack theCallBack;
+extern mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack;
 
 C2DXAndroidActionListener::C2DXAndroidActionListener()
 {
     setActionType(0);
+    getModIdCallBack = NULL;
 }
 
 void C2DXAndroidActionListener::setActionType(int type)
 {
     actionType = type;
+}
+
+void C2DXAndroidActionListener::setGetModIdCallBack(C2DXGetMobIdResultEvent cb)
+{
+    getModIdCallBack = cb;
 }
 
 void C2DXAndroidActionListener::onResult(const char* result)
@@ -31,15 +37,13 @@ void C2DXAndroidActionListener::onResult(const char* result)
         scene->source = source->getCString();
         scene->setCustomParams(params);
 
-        C2DXRestoreSceneResultEvent prt = theCallBack.sceneResultEvent;
+        C2DXRestoreSceneResultEvent prt = restoreSceneCallBack;
         if (prt) {
             prt(scene);
         }
     } else if (1 == actionType) {
-        std::string key = "mobID";
-        CCString* modId = (CCString*) dic->objectForKey(key);
-        C2DXGetMobIdResultEvent prt = theCallBack.mobidResultEvent;
-        CCLog("DEBUG, MobId:%s", modId->getCString());
+        CCString* modId = (CCString*) dic->objectForKey("mobID");
+        C2DXGetMobIdResultEvent prt = getModIdCallBack;
         if (prt) {
             prt(modId->getCString());
         }
@@ -50,16 +54,6 @@ void C2DXAndroidActionListener::onResult(const char* result)
 void C2DXAndroidActionListener::onError(const char* error)
 {
     // do nothing, this is not good design
-}
-
-void C2DXAndroidActionListener::setCallBack(C2DXMobLinkCallBack cb)
-{
-    callBack = cb;
-}
-
-C2DXMobLinkCallBack C2DXAndroidActionListener::getCallBack()
-{
-    return callBack;
 }
 
 C2DXAndroidActionListener::~C2DXAndroidActionListener()

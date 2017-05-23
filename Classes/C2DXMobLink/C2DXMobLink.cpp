@@ -35,13 +35,13 @@ void C2DXMobLink::registerApp(const char *appKey)
 #endif
 }
 
-void C2DXMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
+void C2DXMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
     //Andorid
-    C2DXAndroidMobLink::getMobId(scene);
+    C2DXAndroidMobLink::getMobId(scene, callback);
 
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
@@ -51,7 +51,7 @@ void C2DXMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
 #endif
 }
 
-void C2DXMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
+void C2DXMobLink::setSceneRestoreCallBack(C2DXRestoreSceneResultEvent callback)
 {
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
