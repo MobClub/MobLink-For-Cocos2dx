@@ -44,7 +44,13 @@ namespace mob
              *  @param callback 回调对象
              */
             static void setRestoreCallBack(C2DXMobLinkCallBack callback);
-            
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+            /**
+             * 更新Intent, 在应用程序前置时调用
+             */
+            static void updateIntent();
+#endif
         };
         
     }

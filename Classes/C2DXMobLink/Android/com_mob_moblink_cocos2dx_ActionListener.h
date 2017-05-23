@@ -21,7 +21,7 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnCrea
  * Signature: (Ljava/lang/String;)I
  */
 JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnResult
-  (JNIEnv *, jobject, jobject);
+  (JNIEnv *, jobject, jstring);
 
 /*
  * Class:     com_mob_moblink_cocos2dx_ActionListener

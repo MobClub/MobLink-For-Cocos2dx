@@ -23,7 +23,15 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import android.content.Intent;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 public class AppActivity extends Cocos2dxActivity {
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setIntent(intent);
+	}
 }

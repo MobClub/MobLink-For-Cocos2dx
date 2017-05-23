@@ -57,7 +57,7 @@ void C2DXMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
     //Andorid
-    C2DXAndroidMobLink:setRestoreCallBack(callback);
+    C2DXAndroidMobLink::setRestoreCallBack(callback);
 
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
@@ -67,6 +67,13 @@ void C2DXMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
 #endif
     
 }
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+void C2DXMobLink::updateIntent()
+{
+    C2DXAndroidMobLink::updateIntent();
+}
+#endif
 
 
 

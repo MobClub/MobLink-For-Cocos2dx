@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "C2DXiOSMobLink.h"
+#include "C2DXMobLink.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -57,8 +57,8 @@ static int register_all_packages()
 bool AppDelegate::applicationDidFinishLaunching() {
     
     //初始化MobLink
-    C2DXMobLink::registerApp("1bf42e96da8f0");
-    
+    C2DXMobLink::registerApp("1b8898cb51ccb");
+
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -128,5 +128,8 @@ void AppDelegate::applicationWillEnterForeground() {
 #elif USE_SIMPLE_AUDIO_ENGINE
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     SimpleAudioEngine::getInstance()->resumeAllEffects();
+#endif
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    C2DXMobLink::updateIntent();
 #endif
 }

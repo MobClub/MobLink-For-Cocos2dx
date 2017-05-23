@@ -10,6 +10,7 @@
 #define __C2DXMobLinkSample__C2DXMobLinkScene__
 
 #include <stdio.h>
+#include "string"
 #include "C2DXMobLinkTypeDef.h"
 
 namespace mob
@@ -22,20 +23,24 @@ namespace mob
             /**
              *  路径参数
              */
-            const char *path;
+            std::string path;
             
             /**
              *  来源参数
              */
-            const char *source;
-            
+            std::string source;
+
+            C2DXMobLinkScene();
+            virtual ~C2DXMobLinkScene();
+
+        public:
+            void setCustomParams(C2DXDictionary* dic);
+            C2DXDictionary* getCustomParams();
+        private:
             /**
              *  自定义参数
              */
             C2DXDictionary *customParams;
-
-            C2DXMobLinkScene(){}
-            ~C2DXMobLinkScene(){}
         };
         
     }

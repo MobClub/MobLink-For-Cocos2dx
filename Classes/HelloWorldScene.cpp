@@ -14,9 +14,9 @@ void getMobIdHandler(const char * mobid)
 
 void sceneHandler(C2DXMobLinkScene *scene)
 {
-    log("path = %s", scene -> path);
-    log("source = %s", scene -> source);
-    __Dictionary *custom = scene -> customParams;
+    log("path = %s", scene->path.c_str());
+    log("source = %s", scene->source.c_str());
+    __Dictionary *custom = scene->getCustomParams();
     
     DictElement *element;
     CCDICT_FOREACH(custom, element)
@@ -27,6 +27,7 @@ void sceneHandler(C2DXMobLinkScene *scene)
     }
 
     MessageBox("", "得到场景恢复回调");
+
     
 }
 
@@ -42,12 +43,12 @@ bool HelloWorld::init()
     C2DXMobLinkScene *scene = new C2DXMobLinkScene();
     scene->path = "the path";
     scene->source = "the source";
-    
+
     __Dictionary *customParams = __Dictionary::create();
     customParams -> setObject(__String::create("999"), "Price");
     customParams -> setObject(__String::create("1"), "Chapter");
     customParams -> setObject(__String::create("Dragon Fire"), "ChapterName");
-    scene -> customParams = customParams;
+    scene->setCustomParams(customParams);
     
     C2DXMobLink::getMobId(scene);
     
