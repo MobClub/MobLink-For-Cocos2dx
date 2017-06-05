@@ -27,9 +27,9 @@ namespace mob
             
             static void registerApp(const char *appKey);
             
-            static void getMobId(C2DXMobLinkScene *scene);
+            static void getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback);
             
-            static void setRestoreCallBack(C2DXMobLinkCallBack callback);
+            static void setRestoreCallBack(C2DXRestoreSceneResultEvent callback);
 
             static void resorteSceneCallBack(const char *path, const char *source, const char *paramsStr);
 

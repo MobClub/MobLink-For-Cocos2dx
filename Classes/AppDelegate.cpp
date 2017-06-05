@@ -60,6 +60,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     //初始化MobLink
     C2DXMobLink::registerApp("1b8898cb51ccb");
+    
+    //设置场景恢复之回调
     C2DXMobLink::setSceneRestoreCallBack(sceneHandler);
 
     // initialize director

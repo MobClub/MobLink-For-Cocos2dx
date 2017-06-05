@@ -15,8 +15,6 @@ C2DXMobLinkScene::C2DXMobLinkScene()
     customParams = NULL;
 }
 
-
-
 void C2DXMobLinkScene::setCustomParams(C2DXDictionary* dic)
 {
     if (customParams != dic) {

@@ -6,8 +6,6 @@
 //
 //
 
-USING_NS_CC;
-
 #include "C2DXiOSMobLink.h"
 #include "C2DXMobLinkScene.h"
 #include "C2DXMobLinkTypeDef.h"
@@ -289,7 +287,7 @@ NSArray* convertC2DXArrayToNSArray(C2DXArray *array)
 }
 
 #pragma mark - MobLink Interface
-static mob::moblink::C2DXMobLinkCallBack restoreSceneCallBack;
+static mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack;
 
 void C2DXiOSMobLink::registerApp(const char *appKey)
 {
@@ -298,26 +296,26 @@ void C2DXiOSMobLink::registerApp(const char *appKey)
     [MobLink setDelegate:[C2DXiOSMobLinkDelegate defaultDelegate]];
 }
 
-void C2DXiOSMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene)
+void C2DXiOSMobLink::getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
-    const char *pathChar = scene->path;
-    const char *sourceChar = scene->source;
+    const char *pathChar = scene->path.c_str();
+    const char *sourceChar = scene->source.c_str();
     NSString *path = [NSString stringWithCString:pathChar encoding:NSUTF8StringEncoding];
     NSString *source = [NSString stringWithCString:sourceChar encoding:NSUTF8StringEncoding];
-    NSMutableDictionary *dict = convertC2DXDictionaryToNSDictionary(scene -> customParams);
+    NSMutableDictionary *dict = convertC2DXDictionaryToNSDictionary(scene -> getCustomParams());
     
-    MLSDKScene *theScene = [[MLSDKScene alloc] initWithMLSDKPath:path source:source params:dict];
+    MLSDKScene *theScene = [[MLSDKScene alloc] initWithMLSDKPath:path source:source params:dict]; 
     
     [MobLink getMobId:theScene result:^(NSString *mobid) {
        
         if (mobid)
         {
-            restoreSceneCallBack.mobidResultEvent([mobid UTF8String]);
+            callback([mobid UTF8String]);
         }
     }];
 }
 
-void C2DXiOSMobLink::setRestoreCallBack(mob::moblink::C2DXMobLinkCallBack callback)
+void C2DXiOSMobLink::setRestoreCallBack(mob::moblink::C2DXRestoreSceneResultEvent callback)
 {
     restoreSceneCallBack = callback;
 }
@@ -330,7 +328,7 @@ void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *source, 
     
     NSString *params = [NSString stringWithCString:paramsStr encoding:NSUTF8StringEncoding];
     NSDictionary *dict = [MOBFJson objectFromJSONString:params];
-    scene -> customParams = convertNSDictToCCDict(dict);
+    scene -> setCustomParams(convertNSDictToCCDict(dict));
+    restoreSceneCallBack(scene);
     
-    restoreSceneCallBack.sceneResultEvent(scene);
 }

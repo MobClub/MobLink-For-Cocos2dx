@@ -46,7 +46,7 @@ void C2DXMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGetMobIdRe
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
     //iOS
-    C2DXiOSMobLink::getMobId(scene);
+    C2DXiOSMobLink::getMobId(scene, callback);
     
 #endif
 }
