@@ -26,18 +26,19 @@ namespace mob
         class C2DXAndroidMobLink
         {
         public:
-            static void registerApp(const char *appKey);
             static void getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback);
             static void setRestoreCallBack(C2DXRestoreSceneResultEvent callback);
+
+        private:
             static void updateIntent();
 
         private:
             static jobject getAndroidContext(JNIEnv* env);
             static jobject jsonString2HashMap(JNIEnv* env, const char* json);
             static jobject newActionListener(JNIEnv* env);
-            static C2DXAndroidActionListener* getCxxObjectFromJavaObject(JNIEnv* env, jobject jthiz);
         };
-        
+
+        jint getCxxObject(JNIEnv* env, jobject jthiz);
     }
 }
 

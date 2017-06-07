@@ -10,33 +10,10 @@
 
 #include "C2DXAndroidMobLink.h"
 #include "JSON/CCJSONConverter.h"
+#include "C2DXAndroidRestoreSceneListener.h"
 
 USING_NS_CC;
 using namespace mob::moblink;
-
-
-#pragma mark - MobLink Interface
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-    mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack = NULL;
-#ifdef __cplusplus
-}
-#endif
-
-
-void C2DXAndroidMobLink::registerApp(const char *appKey)
-{
-    JNIEnv* env = JniHelper::getEnv();
-    jobject jContext = getAndroidContext(env);
-    jobject jAppKey = env->NewStringUTF(appKey);
-
-    JniMethodInfo mi;
-    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "initSDK", "(Landroid/content/Context;Ljava/lang/String;)V");
-    env->CallStaticVoidMethod(mi.classID, mi.methodID, jContext, jAppKey);
-}
-
 
 void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
@@ -58,8 +35,7 @@ void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGet
             , "getMobID", "(Ljava/util/HashMap;Ljava/lang/String;Ljava/lang/String;Lcom/mob/moblink/ActionListener;)V");
 
     jobject jListener = newActionListener(env);
-    C2DXAndroidActionListener* cxxListener = getCxxObjectFromJavaObject(env, jListener);
-    cxxListener->setActionType(1);
+    C2DXAndroidActionListener* cxxListener = (C2DXAndroidActionListener*)getCxxObject(env, jListener);
     cxxListener->setGetModIdCallBack(callback);
 
     env->CallStaticVoidMethod(mi.classID, mi.methodID, jParam, jPath, jSource, jListener);
@@ -67,7 +43,19 @@ void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGet
 
 void C2DXAndroidMobLink::setRestoreCallBack(C2DXRestoreSceneResultEvent callback)
 {
-    restoreSceneCallBack = callback;
+    JNIEnv* env = JniHelper::getEnv();
+    JniMethodInfo mi;
+    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/cocos2dx/RestoreSceneListener", "newInstance", "()Lcom/mob/moblink/cocos2dx/RestoreSceneListener;");
+    jobject javaListener = env->CallStaticObjectMethod(mi.classID, mi.methodID);
+
+    C2DXAndroidRestoreSceneListener* cxxListener = (C2DXAndroidRestoreSceneListener*) getCxxObject(env, javaListener);
+    cxxListener->setRestoreSceneCallBack(callback);
+
+    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "setRestoreSceneListener", "(Lcom/mob/moblink/RestoreSceneListener;)V");
+    env->CallStaticVoidMethod(mi.classID, mi.methodID, javaListener);
+
+    // 防止setRestoreCallBack调用过晚, 导致错过scene
+    updateIntent();
 }
 
 jobject C2DXAndroidMobLink::getAndroidContext(JNIEnv* env)
@@ -96,28 +84,22 @@ jobject C2DXAndroidMobLink::newActionListener(JNIEnv* env)
     return env->CallStaticObjectMethod(mi.classID, mi.methodID);
 }
 
-C2DXAndroidActionListener* C2DXAndroidMobLink::getCxxObjectFromJavaObject(JNIEnv* env, jobject jthiz)
-{
-    jclass jclazz = env->GetObjectClass(jthiz);
-    jmethodID jmethod = env->GetMethodID(jclazz, "getCxxObject", "()I");
-    jint result = env->CallIntMethod(jthiz, jmethod);
-    return (C2DXAndroidActionListener*)result;
-
-}
-
 void C2DXAndroidMobLink::updateIntent()
 {
     JNIEnv* env = JniHelper::getEnv();
-    jobject jListener = newActionListener(env);
 
     jobject jactivity = getAndroidContext(env);
     jmethodID jmethod = env->GetMethodID(env->GetObjectClass(jactivity), "getIntent", "()Landroid/content/Intent;");
     jobject jIntent = env->CallObjectMethod(jactivity, jmethod);
 
     JniMethodInfo mi;
-    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "setIntentHandler", "(Landroid/content/Intent;Lcom/mob/moblink/ActionListener;)V");
-    env->CallStaticVoidMethod(mi.classID, mi.methodID, jIntent, jListener);
+    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "updateIntent", "(Landroid/app/Activity;Landroid/content/Intent;)V");
+    env->CallStaticVoidMethod(mi.classID, mi.methodID, jactivity, jIntent);
+}
 
-    jmethod = env->GetMethodID(env->GetObjectClass(jactivity), "setIntent", "(Landroid/content/Intent;)V");
-    env->CallVoidMethod(jactivity, jmethod, nullptr);
+jint mob::moblink::getCxxObject(JNIEnv *env, jobject jthiz) {
+    jclass jthizclass = env->GetObjectClass(jthiz);
+    jmethodID method = env->GetMethodID(jthizclass, "getCxxObject", "()I");
+    jint result = env->CallIntMethod(jthiz, method);
+    return result;
 }

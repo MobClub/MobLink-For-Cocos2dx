@@ -20,6 +20,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 					../../../Classes/C2DXMobLink/Android/C2DXAndroidMobLink.cpp \
 					../../../Classes/C2DXMobLink/Android/C2DXAndroidActionListener.cpp \
 					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_ActionListener.cpp \
+					../../../Classes/C2DXMobLink/Android/C2DXAndroidRestoreSceneListener.cpp \
+					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_RestoreSceneListener.cpp \
 					../../../Classes/C2DXMobLink/Android/JSON/CCJSONConverter.cpp \
 					../../../Classes/C2DXMobLink/Android/JSON/cJSON/cJSON.c
 

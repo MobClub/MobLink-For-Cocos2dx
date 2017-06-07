@@ -23,13 +23,6 @@ namespace mob
         class C2DXMobLink
         {
         public:
-            
-            /**
-             *  注册初始化MobLink
-             *
-             *  @param appKey 从MobLink(mob.com)官网申请得到的Key
-             */
-            static void registerApp(const char *appKey);
         
             /**
              *  获取mobid
@@ -44,13 +37,6 @@ namespace mob
              *  @param callback 回调对象
              */
             static void setSceneRestoreCallBack(C2DXRestoreSceneResultEvent callback);
-
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-            /**
-             * 更新Intent, 在应用程序前置时调用
-             */
-            static void updateIntent();
-#endif
         };
         
     }

@@ -57,10 +57,7 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-    
-    //初始化MobLink
-    C2DXMobLink::registerApp("1b8898cb51ccb");
-    
+
     //设置场景恢复之回调
     C2DXMobLink::setSceneRestoreCallBack(sceneHandler);
 
@@ -135,7 +132,7 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeAllEffects();
 #endif
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    C2DXMobLink::updateIntent();
+//    C2DXMobLink::updateIntent();
 #endif
 }
 

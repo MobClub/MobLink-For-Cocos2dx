@@ -2,6 +2,7 @@
 #include "jni/JniHelper.h"
 #include "com_mob_moblink_cocos2dx_ActionListener.h"
 #include "C2DXAndroidActionListener.h"
+#include "C2DXAndroidMobLink.h"
 
 USING_NS_CC;
 
@@ -43,6 +44,7 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnErro
     const char* cresult = env->GetStringUTFChars(jerror, JNI_FALSE);
     listener->onError(cresult);
     env->ReleaseStringUTFChars(jerror, cresult);
+
 }
 
 /*
@@ -55,11 +57,4 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnDest
 {
     C2DXAndroidActionListener* listener = (C2DXAndroidActionListener*)getCxxObject(env, jthiz);
     delete listener;
-}
-
-jint getCxxObject(JNIEnv* env, jobject jthiz) {
-    jclass jthizclass = env->GetObjectClass(jthiz);
-    jmethodID method = env->GetMethodID(jthizclass, "getCxxObject", "()I");
-    jint result = env->CallIntMethod(jthiz, method);
-    return result;
 }

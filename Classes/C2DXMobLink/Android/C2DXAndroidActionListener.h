@@ -14,18 +14,11 @@ public:
     C2DXAndroidActionListener();
     virtual ~C2DXAndroidActionListener();
 private:
-    // 0, 此对象是用于场景回调使用; 1, 此对象用于
-    int actionType;
 
     // 设置GetModId的回调函数
     C2DXGetMobIdResultEvent getModIdCallBack;
 
 public:
-    /**
-     * 设置类型, 0此对象用于场景还原回调; 1, 用于获取ModId回调
-     * @param type
-     */
-    void setActionType(int type);
 
     /**
      * Action操作成功时调用
@@ -40,14 +33,13 @@ public:
     void onError(const char* error);
 
     /**
-     * 设置GetModId的回调函数, 注意只有当1 == actionType才有意义
+     * 设置GetModId的回调函数
      * @param cb
      */
     void setGetModIdCallBack(C2DXGetMobIdResultEvent cb);
 
     /**
-     * 不加注释了, 我相信还得修改
-     * @param cb
+     * 获取GetModId的回调函数
      */
     C2DXGetMobIdResultEvent getGetMoIdCallBack();
 

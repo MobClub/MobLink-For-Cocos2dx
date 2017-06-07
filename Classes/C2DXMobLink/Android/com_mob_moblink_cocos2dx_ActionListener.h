@@ -39,8 +39,6 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnErro
 JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnDestoryCxxObject
   (JNIEnv *, jobject);
 
-JNIEXPORT jint getCxxObject(JNIEnv* env, jobject jthiz);
-
 #ifdef __cplusplus
 }
 #endif
