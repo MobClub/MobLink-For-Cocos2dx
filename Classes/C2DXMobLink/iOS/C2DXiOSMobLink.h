@@ -24,9 +24,7 @@ namespace mob
         class C2DXiOSMobLink
         {
         public:
-            
-            static void registerApp(const char *appKey);
-            
+ 
             static void getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback);
             
             static void setRestoreCallBack(C2DXRestoreSceneResultEvent callback);

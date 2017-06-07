@@ -289,13 +289,6 @@ NSArray* convertC2DXArrayToNSArray(C2DXArray *array)
 #pragma mark - MobLink Interface
 static mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack;
 
-void C2DXiOSMobLink::registerApp(const char *appKey)
-{
-    NSString* appKeyStr = [NSString stringWithCString:appKey encoding:NSUTF8StringEncoding];
-    [MobLink registerApp:appKeyStr];
-    [MobLink setDelegate:[C2DXiOSMobLinkDelegate defaultDelegate]];
-}
-
 void C2DXiOSMobLink::getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
     const char *pathChar = scene->path.c_str();
