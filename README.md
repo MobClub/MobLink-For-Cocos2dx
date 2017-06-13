@@ -161,14 +161,14 @@ C2DXMobLink::getMobId(scene, getMobIdHandler);
 https://github.com/MobClub/Cocos2dx-For-MobLink.git
 ```
 
-2.复制cocos2d目录到项目/根目录下, 建议使用cocos版本为3.8.1
+2.复制cocos2d目录到项目/根目录下, 建议使用cocos版本为3.8.1 
 3.使用AndroidStudio打开proj.android-studio项目
 4.build 成功后，安装apk到手机上
 5.在不同的平台(如微信/浏览器)分享以下链接，然后访问链接:
 
-http://f.moblink.mob.com/demo/a?mobid=up
-http://f.moblink.mob.com/demo/b?mobid=up
-http://f.moblink.mob.com/demo/c?mobid=up
-http://f.moblink.mob.com/demo/d?mobid=up
+http://f.moblink.mob.com/demo/a?mobid=up 
+http://f.moblink.mob.com/demo/b?mobid=up 
+http://f.moblink.mob.com/demo/c?mobid=up 
+http://f.moblink.mob.com/demo/d?mobid=up 
 
 
