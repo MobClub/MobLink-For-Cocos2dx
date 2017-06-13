@@ -1,27 +1,3 @@
-# 如何Build Demo For Android 
-
-1. 使用git工具下载代码
-
-```
-https://github.com/MobClub/Cocos2dx-For-MobLink.git
-```
-
-2. 复制cocos2d目录到项目/根目录下, 建议使用cocos版本为3.8.1
-
-3. 使用AndroidStudio打开proj.android-studio项目
-    
-4. build 成功后，安装apk到手机上
-
-5. 在不同的平台(如微信/浏览器)分享以下链接，然后访问链接
-    
-    http://f.moblink.mob.com/demo/a?mobid=up
-    
-    http://f.moblink.mob.com/demo/b?mobid=up
-    
-    http://f.moblink.mob.com/demo/c?mobid=up
-    
-    http://f.moblink.mob.com/demo/d?mobid=up
-
 # Cocos2dx For MobLink 快速集成文档
 
 ## 下载并导入MobLink
@@ -174,5 +150,23 @@ C2DXMobLink::getMobId(scene, getMobIdHandler);
 
 **注意:获取到MobId后,应通过分享的方式将带有Mobid的链接分享出去**
 **对于分享,我们更建议使用[Cocos2dx For ShareSDK](https://github.com/MobClub/New-C2DX-For-ShareSDK)**
+
+
+    
+# 如何Build Demo For Android 
+
+1.使用git工具下载代码
+
+```
+https://github.com/MobClub/Cocos2dx-For-MobLink.git
+```
+2.复制cocos2d目录到项目/根目录下, 建议使用cocos版本为3.8.1
+3.使用AndroidStudio打开proj.android-studio项目
+4.build 成功后，安装apk到手机上
+5.在不同的平台(如微信/浏览器)分享以下链接，然后访问链接:
+http://f.moblink.mob.com/demo/a?mobid=up
+http://f.moblink.mob.com/demo/b?mobid=up
+http://f.moblink.mob.com/demo/c?mobid=up
+http://f.moblink.mob.com/demo/d?mobid=up
 
 
