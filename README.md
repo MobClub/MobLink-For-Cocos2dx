@@ -39,7 +39,7 @@ $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
 请参考原生Android平台的配置文件中的， 配置AndroidMainFest.xml文件部分
 
 ```
-http://wiki.mob.com/quick-import-android/#h1-0
+http://wiki.mob.com/sdk-moblink-android-2-0-0
 ```
 
 ## iOS端接入
