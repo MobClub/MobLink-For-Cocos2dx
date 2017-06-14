@@ -64,18 +64,18 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		E26FCF241EEF8F7100B52BFD /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26FCEFF1EEF8F7100B52BFD /* AppDelegate.cpp */; };
+		E26FCF2C1EEF8F7100B52BFD /* C2DXMobLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF141EEF8F7100B52BFD /* C2DXMobLink.cpp */; };
+		E26FCF2D1EEF8F7100B52BFD /* C2DXMobLinkCallBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF161EEF8F7100B52BFD /* C2DXMobLinkCallBack.cpp */; };
+		E26FCF2E1EEF8F7100B52BFD /* C2DXMobLinkScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF181EEF8F7100B52BFD /* C2DXMobLinkScene.cpp */; };
+		E26FCF2F1EEF8F7100B52BFD /* AppController+MobLinkInit.mm in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF1D1EEF8F7100B52BFD /* AppController+MobLinkInit.mm */; };
+		E26FCF301EEF8F7100B52BFD /* C2DXiOSMobLink.mm in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF1F1EEF8F7100B52BFD /* C2DXiOSMobLink.mm */; };
+		E26FCF311EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF211EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.mm */; };
+		E26FCF321EEF8F7100B52BFD /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26FCF221EEF8F7100B52BFD /* HelloWorldScene.cpp */; };
+		E26FCF3B1EEF905800B52BFD /* MobLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26FCF381EEF905800B52BFD /* MobLink.framework */; };
+		E26FCF3C1EEF905800B52BFD /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26FCF3A1EEF905800B52BFD /* MOBFoundation.framework */; };
 		E28716B71EBB2B7D00FEC3A1 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E28716B61EBB2B7D00FEC3A1 /* libz.1.2.5.tbd */; };
 		E28716B91EBB2B8200FEC3A1 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E28716B81EBB2B8200FEC3A1 /* libicucore.tbd */; };
-		E2DF3BD61EE806F00081FCA5 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BB11EE806F00081FCA5 /* AppDelegate.cpp */; };
-		E2DF3BDE1EE806F00081FCA5 /* C2DXMobLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BC61EE806F00081FCA5 /* C2DXMobLink.cpp */; };
-		E2DF3BDF1EE806F00081FCA5 /* C2DXMobLinkCallBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BC81EE806F00081FCA5 /* C2DXMobLinkCallBack.cpp */; };
-		E2DF3BE01EE806F00081FCA5 /* C2DXMobLinkScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BCA1EE806F00081FCA5 /* C2DXMobLinkScene.cpp */; };
-		E2DF3BE11EE806F00081FCA5 /* AppController+MobLinkInit.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BCF1EE806F00081FCA5 /* AppController+MobLinkInit.mm */; };
-		E2DF3BE21EE806F00081FCA5 /* C2DXiOSMobLink.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BD11EE806F00081FCA5 /* C2DXiOSMobLink.mm */; };
-		E2DF3BE31EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BD31EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.mm */; };
-		E2DF3BE41EE806F00081FCA5 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3BD41EE806F00081FCA5 /* HelloWorldScene.cpp */; };
-		E2DF3BEA1EE8072D0081FCA5 /* MobLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DF3BE71EE8072D0081FCA5 /* MobLink.framework */; };
-		E2DF3BEB1EE8072D0081FCA5 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2DF3BE91EE8072D0081FCA5 /* MOBFoundation.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -174,28 +174,28 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		E26FCEFF1EEF8F7100B52BFD /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		E26FCF001EEF8F7100B52BFD /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E26FCF141EEF8F7100B52BFD /* C2DXMobLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLink.cpp; sourceTree = "<group>"; };
+		E26FCF151EEF8F7100B52BFD /* C2DXMobLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLink.h; sourceTree = "<group>"; };
+		E26FCF161EEF8F7100B52BFD /* C2DXMobLinkCallBack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLinkCallBack.cpp; sourceTree = "<group>"; };
+		E26FCF171EEF8F7100B52BFD /* C2DXMobLinkCallBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkCallBack.h; sourceTree = "<group>"; };
+		E26FCF181EEF8F7100B52BFD /* C2DXMobLinkScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLinkScene.cpp; sourceTree = "<group>"; };
+		E26FCF191EEF8F7100B52BFD /* C2DXMobLinkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkScene.h; sourceTree = "<group>"; };
+		E26FCF1A1EEF8F7100B52BFD /* C2DXMobLinkTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkTypeDef.h; sourceTree = "<group>"; };
+		E26FCF1C1EEF8F7100B52BFD /* AppController+MobLinkInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppController+MobLinkInit.h"; sourceTree = "<group>"; };
+		E26FCF1D1EEF8F7100B52BFD /* AppController+MobLinkInit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "AppController+MobLinkInit.mm"; sourceTree = "<group>"; };
+		E26FCF1E1EEF8F7100B52BFD /* C2DXiOSMobLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXiOSMobLink.h; sourceTree = "<group>"; };
+		E26FCF1F1EEF8F7100B52BFD /* C2DXiOSMobLink.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = C2DXiOSMobLink.mm; sourceTree = "<group>"; };
+		E26FCF201EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXiOSMobLinkDelegate.h; sourceTree = "<group>"; };
+		E26FCF211EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = C2DXiOSMobLinkDelegate.mm; sourceTree = "<group>"; };
+		E26FCF221EEF8F7100B52BFD /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
+		E26FCF231EEF8F7100B52BFD /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
+		E26FCF381EEF905800B52BFD /* MobLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MobLink.framework; sourceTree = "<group>"; };
+		E26FCF3A1EEF905800B52BFD /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		E28716B51EBB2A1700FEC3A1 /* Cocos2DXForMobLink-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cocos2DXForMobLink-mobile.entitlements"; sourceTree = "<group>"; };
 		E28716B61EBB2B7D00FEC3A1 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libz.1.2.5.tbd; sourceTree = DEVELOPER_DIR; };
 		E28716B81EBB2B8200FEC3A1 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libicucore.tbd; sourceTree = DEVELOPER_DIR; };
-		E2DF3BB11EE806F00081FCA5 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
-		E2DF3BB21EE806F00081FCA5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E2DF3BC61EE806F00081FCA5 /* C2DXMobLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLink.cpp; sourceTree = "<group>"; };
-		E2DF3BC71EE806F00081FCA5 /* C2DXMobLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLink.h; sourceTree = "<group>"; };
-		E2DF3BC81EE806F00081FCA5 /* C2DXMobLinkCallBack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLinkCallBack.cpp; sourceTree = "<group>"; };
-		E2DF3BC91EE806F00081FCA5 /* C2DXMobLinkCallBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkCallBack.h; sourceTree = "<group>"; };
-		E2DF3BCA1EE806F00081FCA5 /* C2DXMobLinkScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXMobLinkScene.cpp; sourceTree = "<group>"; };
-		E2DF3BCB1EE806F00081FCA5 /* C2DXMobLinkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkScene.h; sourceTree = "<group>"; };
-		E2DF3BCC1EE806F00081FCA5 /* C2DXMobLinkTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXMobLinkTypeDef.h; sourceTree = "<group>"; };
-		E2DF3BCE1EE806F00081FCA5 /* AppController+MobLinkInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppController+MobLinkInit.h"; sourceTree = "<group>"; };
-		E2DF3BCF1EE806F00081FCA5 /* AppController+MobLinkInit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "AppController+MobLinkInit.mm"; sourceTree = "<group>"; };
-		E2DF3BD01EE806F00081FCA5 /* C2DXiOSMobLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXiOSMobLink.h; sourceTree = "<group>"; };
-		E2DF3BD11EE806F00081FCA5 /* C2DXiOSMobLink.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = C2DXiOSMobLink.mm; sourceTree = "<group>"; };
-		E2DF3BD21EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXiOSMobLinkDelegate.h; sourceTree = "<group>"; };
-		E2DF3BD31EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = C2DXiOSMobLinkDelegate.mm; sourceTree = "<group>"; };
-		E2DF3BD41EE806F00081FCA5 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		E2DF3BD51EE806F00081FCA5 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
-		E2DF3BE71EE8072D0081FCA5 /* MobLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MobLink.framework; sourceTree = "<group>"; };
-		E2DF3BE91EE8072D0081FCA5 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -206,12 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28716B91EBB2B8200FEC3A1 /* libicucore.tbd in Frameworks */,
-				E2DF3BEA1EE8072D0081FCA5 /* MobLink.framework in Frameworks */,
+				E26FCF3B1EEF905800B52BFD /* MobLink.framework in Frameworks */,
 				E28716B71EBB2B7D00FEC3A1 /* libz.1.2.5.tbd in Frameworks */,
 				294D0D641D0D56D500F7F5D4 /* CoreText.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
-				E2DF3BEB1EE8072D0081FCA5 /* MOBFoundation.framework in Frameworks */,
+				E26FCF3C1EEF905800B52BFD /* MOBFoundation.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -285,9 +285,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BE51EE8072D0081FCA5 /* SDK */,
+				E26FCF361EEF905800B52BFD /* SDK */,
+				E26FCEFE1EEF8F7100B52BFD /* Classes */,
 				E28716B51EBB2A1700FEC3A1 /* Cocos2DXForMobLink-mobile.entitlements */,
-				E2DF3BB01EE806F00081FCA5 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -387,67 +387,68 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
-		E2DF3BB01EE806F00081FCA5 /* Classes */ = {
+		E26FCEFE1EEF8F7100B52BFD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BB11EE806F00081FCA5 /* AppDelegate.cpp */,
-				E2DF3BB21EE806F00081FCA5 /* AppDelegate.h */,
-				E2DF3BB31EE806F00081FCA5 /* C2DXMobLink */,
-				E2DF3BD41EE806F00081FCA5 /* HelloWorldScene.cpp */,
-				E2DF3BD51EE806F00081FCA5 /* HelloWorldScene.h */,
+				E26FCEFF1EEF8F7100B52BFD /* AppDelegate.cpp */,
+				E26FCF001EEF8F7100B52BFD /* AppDelegate.h */,
+				E26FCF011EEF8F7100B52BFD /* C2DXMobLink */,
+				E26FCF221EEF8F7100B52BFD /* HelloWorldScene.cpp */,
+				E26FCF231EEF8F7100B52BFD /* HelloWorldScene.h */,
 			);
-			path = Classes;
+			name = Classes;
+			path = ../Classes;
 			sourceTree = "<group>";
 		};
-		E2DF3BB31EE806F00081FCA5 /* C2DXMobLink */ = {
+		E26FCF011EEF8F7100B52BFD /* C2DXMobLink */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BC61EE806F00081FCA5 /* C2DXMobLink.cpp */,
-				E2DF3BC71EE806F00081FCA5 /* C2DXMobLink.h */,
-				E2DF3BC81EE806F00081FCA5 /* C2DXMobLinkCallBack.cpp */,
-				E2DF3BC91EE806F00081FCA5 /* C2DXMobLinkCallBack.h */,
-				E2DF3BCA1EE806F00081FCA5 /* C2DXMobLinkScene.cpp */,
-				E2DF3BCB1EE806F00081FCA5 /* C2DXMobLinkScene.h */,
-				E2DF3BCC1EE806F00081FCA5 /* C2DXMobLinkTypeDef.h */,
-				E2DF3BCD1EE806F00081FCA5 /* iOS */,
+				E26FCF141EEF8F7100B52BFD /* C2DXMobLink.cpp */,
+				E26FCF151EEF8F7100B52BFD /* C2DXMobLink.h */,
+				E26FCF161EEF8F7100B52BFD /* C2DXMobLinkCallBack.cpp */,
+				E26FCF171EEF8F7100B52BFD /* C2DXMobLinkCallBack.h */,
+				E26FCF181EEF8F7100B52BFD /* C2DXMobLinkScene.cpp */,
+				E26FCF191EEF8F7100B52BFD /* C2DXMobLinkScene.h */,
+				E26FCF1A1EEF8F7100B52BFD /* C2DXMobLinkTypeDef.h */,
+				E26FCF1B1EEF8F7100B52BFD /* iOS */,
 			);
 			path = C2DXMobLink;
 			sourceTree = "<group>";
 		};
-		E2DF3BCD1EE806F00081FCA5 /* iOS */ = {
+		E26FCF1B1EEF8F7100B52BFD /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BCE1EE806F00081FCA5 /* AppController+MobLinkInit.h */,
-				E2DF3BCF1EE806F00081FCA5 /* AppController+MobLinkInit.mm */,
-				E2DF3BD01EE806F00081FCA5 /* C2DXiOSMobLink.h */,
-				E2DF3BD11EE806F00081FCA5 /* C2DXiOSMobLink.mm */,
-				E2DF3BD21EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.h */,
-				E2DF3BD31EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.mm */,
+				E26FCF1C1EEF8F7100B52BFD /* AppController+MobLinkInit.h */,
+				E26FCF1D1EEF8F7100B52BFD /* AppController+MobLinkInit.mm */,
+				E26FCF1E1EEF8F7100B52BFD /* C2DXiOSMobLink.h */,
+				E26FCF1F1EEF8F7100B52BFD /* C2DXiOSMobLink.mm */,
+				E26FCF201EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.h */,
+				E26FCF211EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.mm */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		E2DF3BE51EE8072D0081FCA5 /* SDK */ = {
+		E26FCF361EEF905800B52BFD /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BE61EE8072D0081FCA5 /* MobLink */,
-				E2DF3BE81EE8072D0081FCA5 /* Required */,
+				E26FCF371EEF905800B52BFD /* MobLink */,
+				E26FCF391EEF905800B52BFD /* Required */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
 		};
-		E2DF3BE61EE8072D0081FCA5 /* MobLink */ = {
+		E26FCF371EEF905800B52BFD /* MobLink */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BE71EE8072D0081FCA5 /* MobLink.framework */,
+				E26FCF381EEF905800B52BFD /* MobLink.framework */,
 			);
 			path = MobLink;
 			sourceTree = "<group>";
 		};
-		E2DF3BE81EE8072D0081FCA5 /* Required */ = {
+		E26FCF391EEF905800B52BFD /* Required */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF3BE91EE8072D0081FCA5 /* MOBFoundation.framework */,
+				E26FCF3A1EEF905800B52BFD /* MOBFoundation.framework */,
 			);
 			path = Required;
 			sourceTree = "<group>";
@@ -611,17 +612,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2DF3BD61EE806F00081FCA5 /* AppDelegate.cpp in Sources */,
-				E2DF3BE21EE806F00081FCA5 /* C2DXiOSMobLink.mm in Sources */,
-				E2DF3BE41EE806F00081FCA5 /* HelloWorldScene.cpp in Sources */,
-				E2DF3BDE1EE806F00081FCA5 /* C2DXMobLink.cpp in Sources */,
-				E2DF3BE01EE806F00081FCA5 /* C2DXMobLinkScene.cpp in Sources */,
+				E26FCF241EEF8F7100B52BFD /* AppDelegate.cpp in Sources */,
+				E26FCF301EEF8F7100B52BFD /* C2DXiOSMobLink.mm in Sources */,
+				E26FCF321EEF8F7100B52BFD /* HelloWorldScene.cpp in Sources */,
+				E26FCF2C1EEF8F7100B52BFD /* C2DXMobLink.cpp in Sources */,
+				E26FCF2E1EEF8F7100B52BFD /* C2DXMobLinkScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
-				E2DF3BE31EE806F00081FCA5 /* C2DXiOSMobLinkDelegate.mm in Sources */,
+				E26FCF311EEF8F7100B52BFD /* C2DXiOSMobLinkDelegate.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				E2DF3BE11EE806F00081FCA5 /* AppController+MobLinkInit.mm in Sources */,
-				E2DF3BDF1EE806F00081FCA5 /* C2DXMobLinkCallBack.cpp in Sources */,
+				E26FCF2F1EEF8F7100B52BFD /* AppController+MobLinkInit.mm in Sources */,
+				E26FCF2D1EEF8F7100B52BFD /* C2DXMobLinkCallBack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
