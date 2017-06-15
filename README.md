@@ -34,13 +34,13 @@ $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON \
 $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
 ```
 
-4. 配置AndroidMainFest.xml文件
+4. 配置AndroidManiFest.xml文件
 
-请参考原生Android平台的配置文件中的， 配置AndroidMainFest.xml文件部分
+请参考原生Android平台的配置文件中的， 配置AndroidManiFest.xml文件部分
 
-```
-http://wiki.mob.com/sdk-moblink-android-2-0-0
-```
+
+[http://wiki.mob.com/sdk-moblink-android-2-0-0](http://wiki.mob.com/sdk-moblink-android-2-0-0)
+
 
 ## iOS端接入
 对于iOS,还需要对Xcode项目进行一些配置
