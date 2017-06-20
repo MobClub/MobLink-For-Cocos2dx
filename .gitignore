@@ -1,3 +1,14 @@
 /cocos2d
 *.iml
 /proj.android-studio/.idea
+
+# Cocos2dx-Bridge
+*.iml
+.gradle
+.idea
+gradle
+build
+captures
+.DS_Store
+local.properties
+.externalNativeBuild
