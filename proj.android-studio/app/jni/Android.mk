@@ -6,6 +6,9 @@ $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/external)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos/audio/include)
+$(call import-add-path,$(LOCAL_PATH)/../../Cocos2dxBridge)
+
+$(warning $(LOCAL_PATH)/../../Cocos2dxBridge/jni)
 
 LOCAL_MODULE := MyGame_shared
 
@@ -13,39 +16,17 @@ LOCAL_MODULE_FILENAME := libMyGame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
 					../../../Classes/AppDelegate.cpp \
-					../../../Classes/HelloWorldScene.cpp \
-					../../../Classes/C2DXMobLink/C2DXMobLink.cpp \
-					../../../Classes/C2DXMobLink/C2DXMobLinkScene.cpp \
-					../../../Classes/C2DXMobLink/C2DXMobLinkCallBack.cpp \
-					../../../Classes/C2DXMobLink/Android/C2DXAndroidMobLink.cpp \
-					../../../Classes/C2DXMobLink/Android/C2DXAndroidActionListener.cpp \
-					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_ActionListener.cpp \
-					../../../Classes/C2DXMobLink/Android/C2DXAndroidRestoreSceneListener.cpp \
-					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_RestoreSceneListener.cpp \
-					../../../Classes/C2DXMobLink/Android/JSON/CCJSONConverter.cpp \
-					../../../Classes/C2DXMobLink/Android/JSON/cJSON/cJSON.c
+					../../../Classes/HelloWorldScene.cpp
 
 
-
-
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON \
-                    $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
-
-# _COCOS_HEADER_ANDROID_BEGIN
-# _COCOS_HEADER_ANDROID_END
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
-
-# _COCOS_LIB_ANDROID_BEGIN
-# _COCOS_LIB_ANDROID_END
+LOCAL_STATIC_LIBRARIES += moblink_bridge
 
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
+$(call import-module, jni)
 
-# _COCOS_LIB_IMPORT_ANDROID_BEGIN
-# _COCOS_LIB_IMPORT_ANDROID_END
