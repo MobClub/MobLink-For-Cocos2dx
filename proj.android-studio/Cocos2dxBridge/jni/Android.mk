@@ -7,6 +7,10 @@ COCOS2D_ROOT := ../../../cocos2d
 LOCAL_MODULE := moblink_bridge
 LOCAL_MODULE_FILENAME := libmoblinbridge
 
+ifeq ($(USE_ARM_MODE),1)
+LOCAL_ARM_MODE := arm
+endif
+
 LOCAL_SRC_FILES := 	../../../Classes/C2DXMobLink/C2DXMobLink.cpp \
 					../../../Classes/C2DXMobLink/C2DXMobLinkScene.cpp \
 					../../../Classes/C2DXMobLink/C2DXMobLinkCallBack.cpp \
