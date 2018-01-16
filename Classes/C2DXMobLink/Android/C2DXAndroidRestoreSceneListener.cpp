@@ -19,19 +19,31 @@ void C2DXAndroidRestoreSceneListener::setRestoreSceneCallBack(C2DXRestoreSceneRe
 
 void C2DXAndroidRestoreSceneListener::onReturnSceneData(const char* result)
 {
-    CCJSONConverter* json = CCJSONConverter::sharedConverter();
-    C2DXDictionary* dic = json->dictionaryFrom(result);
-    __String* path = (__String*) dic->objectForKey("path");
-    __String* source = (__String*) dic->objectForKey("source");
-    C2DXDictionary* params = (C2DXDictionary*) dic->objectForKey("params");
+    CCJSONConverter *json = CCJSONConverter::sharedConverter();
+    C2DXDictionary *dic = json->dictionaryFrom(result);
+    __String* path = (__String*)dic->objectForKey("path");
+    __String* source = (__String*)dic->objectForKey("source");
+    C2DXDictionary* params = (C2DXDictionary*)dic->objectForKey("params");
 
     C2DXMobLinkScene* scene = new C2DXMobLinkScene();
-    scene->path = path->getCString();
-    scene->source = source->getCString();
-    scene->setCustomParams(params);
+    if (path)
+    {
+        scene->path = path->getCString();
+    }
+
+    if (source)
+    {
+        scene->source = source->getCString();
+    }
+
+    if (params)
+    {
+        scene->setCustomParams(params);
+    }
 
     C2DXRestoreSceneResultEvent prt = restoreSceneCallBack;
-    if (prt) {
+    if (prt) 
+    {
         prt(scene);
     }
 
