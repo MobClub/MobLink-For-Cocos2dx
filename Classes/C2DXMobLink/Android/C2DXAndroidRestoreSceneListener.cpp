@@ -26,8 +26,12 @@ void C2DXAndroidRestoreSceneListener::onReturnSceneData(const char* result)
     C2DXDictionary* params = (C2DXDictionary*) dic->objectForKey("params");
 
     C2DXMobLinkScene* scene = new C2DXMobLinkScene();
-    scene->path = path->getCString();
-    scene->source = source->getCString();
+    if (NULL != path) {
+        scene->path = path->getCString();
+    }
+    if (NULL != source) {
+        scene->source = source->getCString();
+    }
     scene->setCustomParams(params);
 
     C2DXRestoreSceneResultEvent prt = restoreSceneCallBack;
