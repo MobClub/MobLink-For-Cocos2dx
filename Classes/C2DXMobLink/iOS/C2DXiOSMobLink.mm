@@ -316,12 +316,23 @@ void C2DXiOSMobLink::setRestoreCallBack(mob::moblink::C2DXRestoreSceneResultEven
 void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *source, const char *paramsStr)
 {
     C2DXMobLinkScene *scene = new C2DXMobLinkScene();
-    scene -> path = path;
-    scene -> source = source;
+    if (path)
+    {
+        scene -> path = path;
+    }
+
+    if (source)
+    {
+        scene -> source = source;
+    }
     
-    NSString *params = [NSString stringWithCString:paramsStr encoding:NSUTF8StringEncoding];
-    NSDictionary *dict = [MOBFJson objectFromJSONString:params];
-    scene -> setCustomParams(convertNSDictToCCDict(dict));
+    if (paramsStr)
+    {
+        NSString *params = [NSString stringWithCString:paramsStr encoding:NSUTF8StringEncoding];
+        NSDictionary *dict = [MOBFJson objectFromJSONString:params];
+        scene -> setCustomParams(convertNSDictToCCDict(dict));
+    }
+    
     restoreSceneCallBack(scene);
     
 }
