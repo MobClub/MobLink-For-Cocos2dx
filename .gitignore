@@ -1,5 +1,6 @@
 /cocos2d
 *.iml
+*.DS_Store
 /proj.android-studio/.idea
 
 # Cocos2dx-Bridge
