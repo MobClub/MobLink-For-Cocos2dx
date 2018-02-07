@@ -103,6 +103,19 @@ ext.findManifest = {
     return manifest;
 }
 
+ext.findJarByPrefix = { prefix ->
+    def libs = new File(projectDir, "libs")
+    String ret = null
+    for (String file : libs.list()) {
+        if (file.startsWith(prefix)) {
+            ret = file;
+            break
+        }
+    }
+    logForfind("findJarByPrefix: "  + ret + ", prefix: " + prefix)
+    return ret;
+}
+
 ext.logForfind = { msg ->
     println("ext.find:" + msg)
 }
