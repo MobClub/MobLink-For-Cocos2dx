@@ -1,9 +1,4 @@
-//
-// Created by litl on 2017/5/18.
-//
-
 #include "C2DXAndroidRestoreSceneListener.h"
-#include "JSON/CCJSONConverter.h"
 
 extern mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack;
 
@@ -17,37 +12,72 @@ void C2DXAndroidRestoreSceneListener::setRestoreSceneCallBack(C2DXRestoreSceneRe
     restoreSceneCallBack = cb;
 }
 
-void C2DXAndroidRestoreSceneListener::onReturnSceneData(const char* result)
+void C2DXAndroidRestoreSceneListener::onReturnSceneData(JNIEnv* env, jobject jScene)
 {
-    CCJSONConverter *json = CCJSONConverter::sharedConverter();
-    C2DXDictionary *dic = json->dictionaryFrom(result);
-    __String* path = (__String*)dic->objectForKey("path");
-    __String* source = (__String*)dic->objectForKey("source");
-    C2DXDictionary* params = (C2DXDictionary*)dic->objectForKey("params");
-
     C2DXMobLinkScene* scene = new C2DXMobLinkScene();
-    if (path)
-    {
-        scene->path = path->getCString();
+    jclass jclazz = env->GetObjectClass(jScene);
+
+    jfieldID jField = env->GetFieldID(jclazz, "path", "Ljava/lang/String;");
+    jobject jTemp = env->GetObjectField(jScene, jField);
+    const char* cvalue = env->GetStringUTFChars((jstring)jTemp, NULL);
+    if (NULL != cvalue) {
+        scene->path = cvalue;
+        env->ReleaseStringUTFChars((jstring )jTemp, cvalue);
     }
 
-    if (source)
-    {
-        scene->source = source->getCString();
+    jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
+    jTemp = env->GetObjectField(jScene, jField);
+    cvalue = env->GetStringUTFChars((jstring)jTemp, NULL);
+    if (NULL != cvalue) {
+        scene->source = cvalue;
+        env->ReleaseStringUTFChars((jstring )jTemp, cvalue);
     }
 
-    if (params)
-    {
-        scene->setCustomParams(params);
+    // TODO
+    jField = env->GetFieldID(jclazz, "params", "Ljava/util/HashMap;");
+    jTemp = env->GetObjectField(jScene, jField);
+    C2DXDictionary* dict = hashMap2Dict(env, jTemp);
+    if (NULL != dict) {
+        scene->setCustomParams(dict);
+        dict->release();
     }
 
     C2DXRestoreSceneResultEvent prt = restoreSceneCallBack;
-    if (prt) 
-    {
+    if (prt) {
         prt(scene);
     }
+}
 
-    dic->release();
+C2DXDictionary* C2DXAndroidRestoreSceneListener::hashMap2Dict(JNIEnv* env, jobject jHashMap)
+{
+    C2DXDictionary* dict = C2DXDictionary::create();
+
+    jclass jclazz = env->FindClass("com/mob/moblink/cocos2dx/MapUtil");
+    jmethodID jMethod = env->GetStaticMethodID(jclazz, "keySet", "(Ljava/util/Map;)[Ljava/lang/Object;");
+    jobject jKeys = env->CallStaticObjectMethod(jclazz, jMethod, jHashMap);
+    jsize count = env->GetArrayLength((jarray)jKeys);
+
+
+    jclazz = env->GetObjectClass(jHashMap);
+    jMethod = env->GetMethodID(jclazz, "get", "(Ljava/lang/Object;)Ljava/lang/Object;");
+    for (int i = 0; i < count; ++i) {
+        jobject jKey = env->GetObjectArrayElement((jobjectArray)jKeys, i);
+        jobject jValue = env->CallObjectMethod(jHashMap, jMethod, jKey);
+        const char * cKey = env->GetStringUTFChars((jstring)jKey, NULL);
+        const char * cValue = env->GetStringUTFChars((jstring)jValue, NULL);
+        if (NULL != cKey && NULL != cValue) {
+            dict->setObject(C2DXString::create(cValue), cKey);
+        }
+        if (NULL != cKey) {
+            env->ReleaseStringUTFChars((jstring)jKey, cKey);
+        }
+        if (NULL != cValue) {
+            env->ReleaseStringUTFChars((jstring)jValue, cValue);
+        }
+        env->DeleteLocalRef(jKey);
+        env->DeleteLocalRef(jValue);
+    }
+    return dict;
 }
 
 C2DXRestoreSceneResultEvent C2DXAndroidRestoreSceneListener::getRestoreSceneCallBack()

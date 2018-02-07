@@ -24,7 +24,7 @@ public:
      * 当时有场景还原时回调
      * @param result json字符串
      */
-    void onReturnSceneData(const char* result);
+    void onReturnSceneData(JNIEnv* env, jobject scene);
 
     /**
      * 设置场景还原的回调函数
@@ -37,6 +37,9 @@ public:
      * @param cb
      */
     C2DXRestoreSceneResultEvent getRestoreSceneCallBack();
+
+private:
+    static C2DXDictionary* hashMap2Dict(JNIEnv* env, jobject jHashMap);
 
 };
 

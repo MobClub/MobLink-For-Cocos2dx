@@ -1,16 +1,7 @@
-//
-//  C2DXAndroidMobLink.m
-//  Cocos2DXForMobLink
-//
-//  Created by 李同垒 on 2017/5/18.
-//
-//
-
-
-
 #include "C2DXAndroidMobLink.h"
 #include "JSON/CCJSONConverter.h"
 #include "C2DXAndroidRestoreSceneListener.h"
+#include "string.h"
 
 USING_NS_CC;
 using namespace mob::moblink;
@@ -18,27 +9,17 @@ using namespace mob::moblink;
 void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
     JNIEnv* env = JniHelper::getEnv();
-    jstring jPath = env->NewStringUTF(scene->path.c_str());
-    jstring jSource = env->NewStringUTF(scene->source.c_str());
-
-    jobject jParam;
-    {
-        // 大括号, 隐藏不必要的变量
-        C2DXDictionary* dict = scene->getCustomParams();
-        CCJSONConverter* json = CCJSONConverter::sharedConverter();
-        const char* ccContent = json->strFrom(dict);
-        jParam = jsonString2HashMap(env, ccContent);
-    }
+    jobject jScene = cxxScene2JavaScene(scene, env);
 
     JniMethodInfo mi;
     JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink"
-            , "getMobID", "(Ljava/util/HashMap;Ljava/lang/String;Ljava/lang/String;Lcom/mob/moblink/ActionListener;)V");
+            , "getMobID", "(Lcom/mob/moblink/Scene;Lcom/mob/moblink/ActionListener;)V");
 
     jobject jListener = newActionListener(env);
     C2DXAndroidActionListener* cxxListener = (C2DXAndroidActionListener*)getCxxObject(env, jListener);
     cxxListener->setGetModIdCallBack(callback);
 
-    env->CallStaticVoidMethod(mi.classID, mi.methodID, jParam, jPath, jSource, jListener);
+    env->CallStaticVoidMethod(mi.classID, mi.methodID, jScene, jListener);
 }
 
 void C2DXAndroidMobLink::setRestoreCallBack(C2DXRestoreSceneResultEvent callback)
@@ -65,16 +46,49 @@ jobject C2DXAndroidMobLink::getAndroidContext(JNIEnv* env)
     return env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
 }
 
-jobject C2DXAndroidMobLink::jsonString2HashMap(JNIEnv* env, const char* json)
+jobject C2DXAndroidMobLink::cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* env)
 {
-    JniMethodInfo mi;
-    JniHelper::getMethodInfo(mi, "com/mob/tools/utils/Hashon", "<init>", "()V");
-    jobject jthiz = env->NewObject(mi.classID, mi.methodID);
+    jclass jclazz = env->FindClass("com/mob/moblink/Scene");
+    jmethodID jmethod = env->GetMethodID(jclazz, "<init>", "()V");
+    jobject jScene = env->NewObject(jclazz, jmethod);
 
-    jmethodID jmethod = env->GetMethodID(mi.classID, "fromJson", "(Ljava/lang/String;)Ljava/util/HashMap;");
-    jstring jJson = env->NewStringUTF(json);
-    jobject result = env->CallObjectMethod(jthiz, jmethod, jJson);
-    return result;
+    jobject jTemp = env->NewStringUTF(scene->path.c_str());
+    jfieldID jField = env->GetFieldID(jclazz, "path", "Ljava/lang/String;");
+    env->SetObjectField(jScene, jField, jTemp);
+
+    jTemp = env->NewStringUTF(scene->source.c_str());
+    jField = env->GetFieldID(jclazz, "path", "Ljava/lang/String;");
+    env->SetObjectField(jScene, jField, jTemp);
+
+    jTemp = NULL;
+    C2DXDictionary* dict = scene->getCustomParams();
+    if (NULL != dict) {
+        jTemp = dict2HashMap(dict, env);
+    }
+    jField = env->GetFieldID(jclazz, "params", "Ljava/util/HashMap;");
+    env->SetObjectField(jScene, jField, jTemp);
+
+    return jScene;
+}
+
+jobject C2DXAndroidMobLink::dict2HashMap(C2DXDictionary* dict, JNIEnv* env)
+{
+    jclass jclazz = env->FindClass("java/util/HashMap");
+    jmethodID jMethod = env->GetMethodID(jclazz, "<init>", "()V");
+    jobject jHashMap = env->NewObject(jclazz, jMethod);
+    jMethod = env->GetMethodID(jclazz, "put", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+    C2DXArray* keys = dict->allKeys();
+    int size = NULL != keys ? keys->count() : 0;
+    for (int i = 0; i < size; ++i) {
+        CCString* key = dynamic_cast<CCString*>(keys->objectAtIndex(i));
+
+        jobject jKey = env->NewStringUTF(key->getCString());
+        jobject jValue = env->NewStringUTF(dict->valueForKey(key->getCString())->getCString());
+
+        env->CallObjectMethod(jHashMap, jMethod, jKey, jValue);
+    }
+    return jHashMap;
 }
 
 jobject C2DXAndroidMobLink::newActionListener(JNIEnv* env)

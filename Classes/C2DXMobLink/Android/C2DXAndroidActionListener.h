@@ -1,7 +1,3 @@
-//
-// Created by litl on 2017/5/18.
-//
-
 #ifndef __C2DXMobLinkSample__C2DXAndroidActionListener__
 #define __C2DXMobLinkSample__C2DXAndroidActionListener__
 

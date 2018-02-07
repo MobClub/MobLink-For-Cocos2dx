@@ -1,12 +1,11 @@
 package com.mob.moblink.cocos2dx;
 
 import android.app.Activity;
+import android.content.Intent;
 
-import org.json.JSONObject;
+import com.mob.moblink.Scene;
 
-import java.util.HashMap;
-
-public class RestoreSceneListener extends com.mob.moblink.AbstractRestoreSceneListener {
+public class RestoreSceneListener extends Object implements com.mob.moblink.RestoreSceneListener {
 
 	private int cxxObject;
 
@@ -16,10 +15,23 @@ public class RestoreSceneListener extends com.mob.moblink.AbstractRestoreSceneLi
 	}
 
 	@Override
-	public void onReturnSceneData(Activity activity, HashMap<String, Object> result) {
-		JSONObject jsonObject = new JSONObject(result);
-		String value = jsonObject.toString();
-		nativeOnReturnSceneData(activity, value);
+	public void onBeginCheckScene() {
+		// do nothing
+	}
+
+	@Override
+	public void onFinishCheckScene() {
+		// do nothing
+	}
+
+	@Override
+	public boolean onReturnSceneIntent(String var1, Intent var2) {
+		return false;
+	}
+
+	@Override
+	public void onReturnSceneData(Activity activity, Scene result) {
+		nativeOnReturnSceneData(activity, result);
 	}
 
 	@Override
@@ -29,7 +41,7 @@ public class RestoreSceneListener extends com.mob.moblink.AbstractRestoreSceneLi
 	}
 
 	private native int nativeOnCreateCxxObject();
-	private native int nativeOnReturnSceneData(Activity activity, String string);
+	private native int nativeOnReturnSceneData(Activity activity, Scene string);
 	private native int nativeOnDestoryCxxObject();
 
 	public int getCxxObject() {

@@ -30,6 +30,7 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnResu
     const char* cresult = env->GetStringUTFChars(jresult, JNI_FALSE);
     listener->onResult(cresult);
     env->ReleaseStringUTFChars(jresult, cresult);
+    return 0;
 }
 
 /*
@@ -44,7 +45,7 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnErro
     const char* cresult = env->GetStringUTFChars(jerror, JNI_FALSE);
     listener->onError(cresult);
     env->ReleaseStringUTFChars(jerror, cresult);
-
+    return 0;
 }
 
 /*
@@ -57,4 +58,5 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_ActionListener_nativeOnDest
 {
     C2DXAndroidActionListener* listener = (C2DXAndroidActionListener*)getCxxObject(env, jthiz);
     delete listener;
+    return 0;
 }

@@ -18,9 +18,7 @@ LOCAL_SRC_FILES := 	../../../Classes/C2DXMobLink/C2DXMobLink.cpp \
 					../../../Classes/C2DXMobLink/Android/C2DXAndroidActionListener.cpp \
 					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_ActionListener.cpp \
 					../../../Classes/C2DXMobLink/Android/C2DXAndroidRestoreSceneListener.cpp \
-					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_RestoreSceneListener.cpp \
-					../../../Classes/C2DXMobLink/Android/JSON/CCJSONConverter.cpp \
-					../../../Classes/C2DXMobLink/Android/JSON/cJSON/cJSON.c
+					../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_RestoreSceneListener.cpp
 
 					
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(COCOS2D_ROOT)/cocos \

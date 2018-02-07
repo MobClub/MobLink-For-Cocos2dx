@@ -34,7 +34,8 @@ namespace mob
 
         private:
             static jobject getAndroidContext(JNIEnv* env);
-            static jobject jsonString2HashMap(JNIEnv* env, const char* json);
+            static jobject cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* env);
+            static jobject dict2HashMap(C2DXDictionary* dict, JNIEnv* env);
             static jobject newActionListener(JNIEnv* env);
         };
 

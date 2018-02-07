@@ -1,8 +1,6 @@
-import org.apache.tools.ant.taskdefs.condition.Os
-
 apply plugin: 'com.android.library'
-apply from: '../MobLink/build-mix.gradle'
-
+apply from: './build-mix.gradle'
+apply plugin: 'com.mob.sdk'
 
 android {
 
@@ -56,5 +54,10 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':MobLink')
+}
+
+MobSDK {
+    MobCommons {}
+    MobTools {}
+    MobLink {version = "2.0.5"}
 }

@@ -1,9 +1,5 @@
 package com.mob.moblink.cocos2dx;
 
-import org.json.JSONObject;
-
-import java.util.HashMap;
-
 /**
  * ActionListener for cocos2dx.<br/>
  * 使用demo, step by step:
@@ -16,9 +12,7 @@ import java.util.HashMap;
  * </ul>
  *
  */
-public class ActionListener extends Object implements com.mob.moblink.ActionListener {
-
-
+public class ActionListener extends Object implements com.mob.moblink.ActionListener<String> {
 	private int cxxObject;
 
 	public ActionListener() {
@@ -27,16 +21,13 @@ public class ActionListener extends Object implements com.mob.moblink.ActionList
 	}
 
 	@Override
-	public void onResult(HashMap<String, Object> params) {
-		JSONObject json = new JSONObject(params);
-		String value = json.toString();
-		nativeOnResult(value);
+	public void onResult(String mid) {
+		nativeOnResult(mid);
 	}
 
 	@Override
 	public void onError(Throwable t) {
-		JSONObject json = new JSONObject();
-		String value = json.toString();
+		String value = t.toString();
 		nativeOnError(value);
 	}
 
