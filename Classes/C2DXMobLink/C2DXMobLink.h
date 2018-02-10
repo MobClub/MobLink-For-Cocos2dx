@@ -9,7 +9,6 @@
 #ifndef __C2DXMobLinkSample__C2DXMobLink__
 #define __C2DXMobLinkSample__C2DXMobLink__
 
-#include <iostream>
 #include "cocos2d.h"
 #include "C2DXMobLinkScene.h"
 #include "C2DXMobLinkCallBack.h"

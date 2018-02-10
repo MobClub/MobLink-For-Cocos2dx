@@ -25,14 +25,11 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(COCOS2D_ROOT)/cocos \
 					$(LOCAL_PATH)/$(COCOS2D_ROOT)/cocos/platform/android \
 					$(LOCAL_PATH)/../../../Classes \
 					$(LOCAL_PATH)/../../../Classes/C2DXMobLink \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON \
-                    $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
-					
+					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android
+
+
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Classes/C2DXMobLink \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android \
-					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON \
-                    $(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
+					$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android
 					
 
 include $(BUILD_STATIC_LIBRARY)
