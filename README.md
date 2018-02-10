@@ -8,33 +8,20 @@
 
 ## Android端接入
 
-1. 复制/proj.android-studio/app/libs目录下的MobCommons.jar、MobLink-1.1.0.jar、MobLink-Cocos2dx.jar、MobTools.jar到您的coco2dx项目libs目录下
+1. 导入Cocos2dxBridge Module到您的项目中（目录proj.android-studio\Cocos2dxBridge）。复制/proj.android-studio/app/libs目录下的MobCommons.jar、MobLink-1.1.0.jar、MobLink-Cocos2dx.jar、MobTools.jar到您的coco2dx项目libs目录下
 
-2. 添加编译需要的cpp源代码(Android.mk)
-
-```
-../../../Classes/C2DXMobLink/C2DXMobLink.cpp \
-../../../Classes/C2DXMobLink/C2DXMobLinkScene.cpp \
-../../../Classes/C2DXMobLink/C2DXMobLinkCallBack.cpp \
-../../../Classes/C2DXMobLink/Android/C2DXAndroidMobLink.cpp \
-../../../Classes/C2DXMobLink/Android/C2DXAndroidActionListener.cpp \
-../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_ActionListener.cpp \
-../../../Classes/C2DXMobLink/Android/C2DXAndroidRestoreSceneListener.cpp \
-../../../Classes/C2DXMobLink/Android/com_mob_moblink_cocos2dx_RestoreSceneListener.cpp \
-../../../Classes/C2DXMobLink/Android/JSON/CCJSONConverter.cpp \
-../../../Classes/C2DXMobLink/Android/JSON/cJSON/cJSON.c
-```
-
-3. 添加编译需要的头文件路径(Android.mk)
+2. 在您的Android.mk文件中加入对Cocos2dxBridge module的jni部分(Android.mk文件）的引用，即是引入moblik_bridge静态库。在您的Android.mk文件中添加如下代码： 
+编译需要的cpp源代码(Android.mk)
 
 ```
-$(LOCAL_PATH)/../../../Classes/C2DXMobLink \
-$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android \
-$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON \
-$(LOCAL_PATH)/../../../Classes/C2DXMobLink/Android/JSON/cJSON
+$(call import-add-path,$(LOCAL_PATH)/../../Cocos2dxBridge)
+LOCAL_WHOLE_STATIC_LIBRARIES := moblink_bridge
+$(call import-module, jni)
 ```
 
-4. 配置AndroidManiFest.xml文件
+如果您不太明白怎么复制这三行配置，可以去参考demo的Android.mk文件。
+
+3. 配置AndroidManiFest.xml文件
 
 请参考原生Android平台的配置文件中的， 配置AndroidManiFest.xml文件部分
 
