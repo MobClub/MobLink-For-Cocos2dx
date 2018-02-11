@@ -8,7 +8,7 @@
 
 ## Android端接入
 
-1. 导入Cocos2dxBridge Module到您的项目中（目录proj.android-studio\Cocos2dxBridge）。
+1. 导入Cocos2dxBridge Module到您的项目中（目录proj.android-studio\Cocos2dxBridge）， 并依赖此module。
 
 2. 在您的Android.mk文件中加入对Cocos2dxBridge module的jni部分(Android.mk文件）的引用，即是引入moblik_bridge静态库。在您的Android.mk文件中添加如下代码： 
 编译需要的cpp源代码(Android.mk)
