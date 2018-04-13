@@ -1,5 +1,18 @@
-# Cocos2dx For MobLink 快速集成文档
+# MobLink For Cocos2dx
 
+### 本插件是基于[MobLink](http://moblink.mob.com/) 对Cococs2dx进行插件扩充支持。目的是方便Cococs2dx开发者更方便地集成使用MobLink。
+
+
+**当前支持的 MobLink 版本**
+
+- iOS v2.2.0
+- Android v2.2.0
+
+**集成文档**
+
+- [快速集成文档](http://wiki.mob.com/moblink-cocos2d-doc/)
+
+- - - - -
 ## 下载并导入MobLink
 
 下载[Cocos2dx-For-MobLink](https://github.com/MobClub/Cocos2dx-For-MobLink),下载完成后打开项目,将/Classes/C2DXMobLink文件夹复制到您的cocos2dx项目/Classes目录下
