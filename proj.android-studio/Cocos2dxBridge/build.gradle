@@ -57,7 +57,7 @@ dependencies {
 }
 
 MobSDK {
-    MobCommons {}
-    MobTools {}
-    MobLink {version = "2.0.5"}
+//    MobCommons {}
+//    MobTools {}
+    MobLink {version = "2.2.1"}
 }
