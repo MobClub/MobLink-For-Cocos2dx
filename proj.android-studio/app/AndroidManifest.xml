@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mob.moblink.demo"
-    android:versionName="2.0.5"
-    android:versionCode="20005"
+    android:versionName="2.2.1"
+    android:versionCode="20201"
     android:installLocation="auto">
 
     <uses-feature android:glEsVersion="0x00020000" />

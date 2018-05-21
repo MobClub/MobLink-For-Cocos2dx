@@ -1,6 +1,7 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 22
@@ -10,8 +11,8 @@ android {
         applicationId "com.mob.moblink.demo"
         minSdkVersion 10
         targetSdkVersion 16
-        versionCode 200
-        versionName "2.0.0"
+        versionCode 20201
+        versionName "2.2.1"
 
         externalNativeBuild {
             ndkBuild {
