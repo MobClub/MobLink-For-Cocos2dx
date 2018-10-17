@@ -25,8 +25,9 @@
         <meta-data android:name="android.app.lib_name"
                    android:value="MyGame" />
 
-        <meta-data android:name="Mob-AppKey" android:value="1b8898cb51ccb"/>
-        <!--<meta-data android:name="Mob-AppKey" android:value="1cc67a00af338"/>-->
+        <!--<meta-data android:name="Mob-AppKey" android:value="1b8898cb51ccb"/>-->
+		<meta-data android:name="Mob-AppKey" android:value="moba6b6c6d6"/>
+		<meta-data android:name="Mob-AppSecret" android:value="b89d2427a3bc7ad1aea1e1e8c1d36bf3"/>
         <activity
             android:name="org.cocos2dx.cpp.AppActivity"
             android:screenOrientation="portrait"
