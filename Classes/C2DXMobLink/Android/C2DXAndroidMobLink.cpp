@@ -56,7 +56,7 @@ jobject C2DXAndroidMobLink::cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* 
     env->SetObjectField(jScene, jField, jTemp);
 
     jTemp = env->NewStringUTF(scene->source.c_str());
-    jField = env->GetFieldID(jclazz, "path", "Ljava/lang/String;");
+    jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
     env->SetObjectField(jScene, jField, jTemp);
 
     jTemp = NULL;
@@ -66,6 +66,8 @@ jobject C2DXAndroidMobLink::cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* 
     }
     jField = env->GetFieldID(jclazz, "params", "Ljava/util/HashMap;");
     env->SetObjectField(jScene, jField, jTemp);
+
+    log("cxxScene2JavaScene. path: %s, source: %s", scene->path.c_str(), scene->source.c_str());
 
     return jScene;
 }

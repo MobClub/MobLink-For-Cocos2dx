@@ -1,5 +1,7 @@
 package com.mob.moblink.cocos2dx;
 
+import android.util.Log;
+
 /**
  * ActionListener for cocos2dx.<br/>
  * 使用demo, step by step:
@@ -13,6 +15,7 @@ package com.mob.moblink.cocos2dx;
  *
  */
 public class ActionListener extends Object implements com.mob.moblink.ActionListener<String> {
+	private static final String TAG = "ActionListener";
 	private int cxxObject;
 
 	public ActionListener() {
@@ -22,11 +25,13 @@ public class ActionListener extends Object implements com.mob.moblink.ActionList
 
 	@Override
 	public void onResult(String mid) {
+		Log.d(TAG, "onResult(). mobId: " + mid);
 		nativeOnResult(mid);
 	}
 
 	@Override
 	public void onError(Throwable t) {
+		Log.d(TAG, "onError(). mobId: " + t.getMessage(), t);
 		String value = t.toString();
 		nativeOnError(value);
 	}
