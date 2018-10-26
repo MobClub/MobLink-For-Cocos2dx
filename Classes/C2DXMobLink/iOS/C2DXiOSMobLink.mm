@@ -299,7 +299,7 @@ void C2DXiOSMobLink::getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent c
     
     MLSDKScene *theScene = [[MLSDKScene alloc] initWithMLSDKPath:path source:source params:dict]; 
     
-    [MobLink getMobId:theScene result:^(NSString *mobid) {
+    [MobLink getMobId:theScene result:^(NSString *mobid, NSError *error) {
        
         if (mobid)
         {
