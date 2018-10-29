@@ -9,7 +9,7 @@ Scene* HelloWorld::createScene()
 
 void getMobIdHandler(const char * mobid)
 {
-    log("result - mobid = %s", mobid);
+    log("[moblink-cocos]getMobIdHandler: mobId = %s", mobid);
     std::string content = "mobId:";
     content += mobid;
     MessageBox(content.c_str(), "获取MobId的回调");
@@ -81,7 +81,7 @@ bool HelloWorld::init()
             case ui::Widget::TouchEventType::ENDED: {
                 C2DXMobLinkScene *scene = new C2DXMobLinkScene();
                 scene->path = "the path";
-                scene->source = "the source";
+                // scene->source = "the source";
 
                 __Dictionary *customParams = __Dictionary::create();
                 customParams->setObject(__String::create("999"), "Price");

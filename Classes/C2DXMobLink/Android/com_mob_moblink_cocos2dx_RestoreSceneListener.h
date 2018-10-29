@@ -18,10 +18,10 @@ JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_RestoreSceneListener_native
 /*
  * Class:     com_mob_moblink_cocos2dx_RestoreSceneListener
  * Method:    nativeOnReturnSceneData
- * Signature: (Landroid/app/Activity;Lcom/mob/moblink/Scene;)I
+ * Signature: (Lcom/mob/moblink/Scene;)I
  */
 JNIEXPORT jint JNICALL Java_com_mob_moblink_cocos2dx_RestoreSceneListener_nativeOnReturnSceneData
-  (JNIEnv *, jobject, jobject, jobject);
+  (JNIEnv *, jobject, jobject);
 
 /*
  * Class:     com_mob_moblink_cocos2dx_RestoreSceneListener

@@ -25,13 +25,13 @@ void C2DXAndroidRestoreSceneListener::onReturnSceneData(JNIEnv* env, jobject jSc
         env->ReleaseStringUTFChars((jstring )jTemp, cvalue);
     }
 
-    jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
-    jTemp = env->GetObjectField(jScene, jField);
-    cvalue = env->GetStringUTFChars((jstring)jTemp, NULL);
-    if (NULL != cvalue) {
-        scene->source = cvalue;
-        env->ReleaseStringUTFChars((jstring )jTemp, cvalue);
-    }
+    // jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
+    // jTemp = env->GetObjectField(jScene, jField);
+    // cvalue = env->GetStringUTFChars((jstring)jTemp, NULL);
+    // if (NULL != cvalue) {
+    //     scene->source = cvalue;
+    //     env->ReleaseStringUTFChars((jstring )jTemp, cvalue);
+    // }
 
     // TODO
     jField = env->GetFieldID(jclazz, "params", "Ljava/util/HashMap;");

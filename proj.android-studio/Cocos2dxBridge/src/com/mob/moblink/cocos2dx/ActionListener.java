@@ -21,6 +21,7 @@ public class ActionListener extends Object implements com.mob.moblink.ActionList
 	public ActionListener() {
 		super();
 		cxxObject = nativeOnCreateCxxObject();
+		Log.d(TAG, "create cxxObject. cxxObject: " + cxxObject);
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class ActionListener extends Object implements com.mob.moblink.ActionList
 
 	@Override
 	public void onError(Throwable t) {
-		Log.d(TAG, "onError(). mobId: " + t.getMessage(), t);
+		Log.d(TAG, "onError(). msg: " + t.getMessage(), t);
 		String value = t.toString();
 		nativeOnError(value);
 	}
@@ -48,6 +49,7 @@ public class ActionListener extends Object implements com.mob.moblink.ActionList
 	private native int nativeOnDestoryCxxObject();
 
 	public int getCxxObject() {
+		Log.d(TAG, "get cxxObject. cxxObject: " + cxxObject);
 		return cxxObject;
 	}
 

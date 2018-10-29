@@ -138,13 +138,13 @@ void AppDelegate::applicationWillEnterForeground() {
 
 void sceneHandler(C2DXMobLinkScene *scene)
 {
-    log("path = %s", scene->path.c_str());
-    log("source = %s", scene->source.c_str());
+    log("[moblink-cocos]sceneHandler(). path = %s", scene->path.c_str());
+    // log("source = %s", scene->source.c_str());
     __Dictionary *custom = scene->getCustomParams();
 
     std::string content;
     content += "path:"; content += scene->path.c_str(); content += "\n";
-    content += "source:"; content += scene->source.c_str(); content += "\n";
+    // content += "source:"; content += scene->source.c_str(); content += "\n";
     content += "params:\n";
 
     DictElement *element;
@@ -152,7 +152,7 @@ void sceneHandler(C2DXMobLinkScene *scene)
         {
             const char *key = element -> getStrKey();
             __String *obj = (__String*)element -> getObject();
-            log("key = %s, value = %s",key,obj -> getCString());
+            log("[moblink-cocos]sceneHandler(). key = %s, value = %s",key,obj -> getCString());
             content += key; content += ":"; content += obj->getCString(); content += "\n";
         }
 
