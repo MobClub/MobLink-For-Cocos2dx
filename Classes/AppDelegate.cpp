@@ -1,3 +1,27 @@
+/****************************************************************************
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+ 
+ http://www.cocos2d-x.org
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "C2DXMobLink.h"
@@ -43,8 +67,8 @@ void sceneHandler(C2DXMobLinkScene *scene);
 // it will affect all platforms
 void AppDelegate::initGLContextAttrs()
 {
-    // set OpenGL context attributes: red,green,blue,alpha,depth,stencil
-    GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
+    // set OpenGL context attributes: red,green,blue,alpha,depth,stencil,multisamplesCount
+    GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8, 0};
 
     GLView::setGLContextAttrs(glContextAttrs);
 }
@@ -57,18 +81,18 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-
+    
     //设置场景恢复之回调
     C2DXMobLink::setSceneRestoreCallBack(sceneHandler);
-
+    
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("Cocos2DXForMobLink", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect("MobLinkCocos2DXDemo", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("Cocos2DXForMobLink");
+        glview = GLViewImpl::create("MobLinkCocos2DXDemo");
 #endif
         director->setOpenGLView(glview);
     }
@@ -131,30 +155,26 @@ void AppDelegate::applicationWillEnterForeground() {
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     SimpleAudioEngine::getInstance()->resumeAllEffects();
 #endif
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//    C2DXMobLink::updateIntent();
-#endif
 }
 
 void sceneHandler(C2DXMobLinkScene *scene)
 {
-    log("[moblink-cocos]sceneHandler(). path = %s", scene->path.c_str());
-    // log("source = %s", scene->source.c_str());
+    log("path = %s", scene->path.c_str());
     __Dictionary *custom = scene->getCustomParams();
-
+    
     std::string content;
     content += "path:"; content += scene->path.c_str(); content += "\n";
-    // content += "source:"; content += scene->source.c_str(); content += "\n";
     content += "params:\n";
-
+    
     DictElement *element;
     CCDICT_FOREACH(custom, element)
-        {
-            const char *key = element -> getStrKey();
-            __String *obj = (__String*)element -> getObject();
-            log("[moblink-cocos]sceneHandler(). key = %s, value = %s",key,obj -> getCString());
-            content += key; content += ":"; content += obj->getCString(); content += "\n";
-        }
-
+    {
+        const char *key = element -> getStrKey();
+        __String *obj = (__String*)element -> getObject();
+        log("key = %s, value = %s",key,obj -> getCString());
+        content += key; content += ":"; content += obj->getCString(); content += "\n";
+    }
+    
     MessageBox(content.c_str(), "得到场景恢复回调");
 }
+

@@ -29,7 +29,7 @@ namespace mob
             
             static void setRestoreCallBack(C2DXRestoreSceneResultEvent callback);
 
-            static void resorteSceneCallBack(const char *path, const char *source, const char *paramsStr);
+            static void resorteSceneCallBack(const char *path, const char *paramsStr);
 
         };
         

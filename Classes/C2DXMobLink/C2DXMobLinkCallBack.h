@@ -21,7 +21,7 @@ namespace mob
          *
          *  @param C2DXGetMobIdResultEvent 回调mobid
          */
-        typedef void(*C2DXGetMobIdResultEvent) (const char * mobid);
+        typedef void(*C2DXGetMobIdResultEvent) (const char * mobid, const char * errorInfo);
         
         /**
          *  恢复场景之回调

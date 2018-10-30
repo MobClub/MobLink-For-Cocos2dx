@@ -10,8 +10,8 @@
 #include "C2DXMobLinkScene.h"
 #include "C2DXMobLinkTypeDef.h"
 
-#import <MobLink/MobLink.h>
-#import <MobLink/MLSDKScene.h>
+#import <MobLinkPro/MobLink.h>
+#import <MobLinkPro/MLSDKScene.h>
 #import <MOBFoundation/MOBFJson.h>
 #import "C2DXiOSMobLinkDelegate.h"
 
@@ -292,18 +292,19 @@ static mob::moblink::C2DXRestoreSceneResultEvent restoreSceneCallBack;
 void C2DXiOSMobLink::getMobId(C2DXMobLinkScene *scene, C2DXGetMobIdResultEvent callback)
 {
     const char *pathChar = scene->path.c_str();
-    const char *sourceChar = scene->source.c_str();
     NSString *path = [NSString stringWithCString:pathChar encoding:NSUTF8StringEncoding];
-    NSString *source = [NSString stringWithCString:sourceChar encoding:NSUTF8StringEncoding];
     NSMutableDictionary *dict = convertC2DXDictionaryToNSDictionary(scene -> getCustomParams());
     
-    MLSDKScene *theScene = [[MLSDKScene alloc] initWithMLSDKPath:path source:source params:dict]; 
+    MLSDKScene *theScene = [MLSDKScene sceneForPath:path params:dict];
     
-    [MobLink getMobId:theScene result:^(NSString *mobid, NSError *error) {
-       
-        if (mobid)
+    [MobLink getMobId:theScene result:^(NSString *mobid, NSString *domain, NSError *error) {
+        if (!error)
         {
-            callback([mobid UTF8String]);
+            callback([mobid UTF8String], NULL);
+        }
+        else if (error.userInfo[@"error"])
+        {
+            callback(NULL, [error.userInfo[@"error"] UTF8String]);
         }
     }];
 }
@@ -313,17 +314,12 @@ void C2DXiOSMobLink::setRestoreCallBack(mob::moblink::C2DXRestoreSceneResultEven
     restoreSceneCallBack = callback;
 }
 
-void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *source, const char *paramsStr)
+void C2DXiOSMobLink::resorteSceneCallBack(const char *path, const char *paramsStr)
 {
     C2DXMobLinkScene *scene = new C2DXMobLinkScene();
     if (path)
     {
         scene -> path = path;
-    }
-
-    if (source)
-    {
-        scene -> source = source;
     }
     
     if (paramsStr)
