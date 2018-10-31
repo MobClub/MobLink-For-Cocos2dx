@@ -9,7 +9,7 @@ Scene* HelloWorld::createScene()
 
 void getMobIdHandler(const char * mobid, const char * errorInfo)
 {
-    log("result - mobid = %s", mobid);
+    log("[moblink-cocos]getMobIdHandler: mobId = %s, errorInfo = %s", mobid, errorInfo);
     std::string content = "mobId:";
     content += mobid;
     MessageBox(content.c_str(), "获取MobId的回调");

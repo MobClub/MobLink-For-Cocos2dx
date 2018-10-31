@@ -14,7 +14,7 @@ void C2DXAndroidActionListener::onResult(const char* result)
 {
     C2DXGetMobIdResultEvent prt = getModIdCallBack;
     if (prt) {
-        prt(result);
+        prt(result, "");
     }
 }
 
@@ -23,7 +23,7 @@ void C2DXAndroidActionListener::onError(const char* error)
     // 临时解决mobid失败时, 传空字符串(与ios保持一致)
     C2DXGetMobIdResultEvent prt = getModIdCallBack;
     if (prt) {
-        prt("");
+        prt("", error);
     }
 }
 
