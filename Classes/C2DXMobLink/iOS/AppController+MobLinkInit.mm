@@ -8,7 +8,7 @@
 
 #import "AppController+MobLinkInit.h"
 #import "C2DXiOSMobLinkDelegate.h"
-#import <MobLink/MobLink.h>
+#import <MobLinkPro/MobLink.h>
 
 @implementation AppController (MobLinkInit)
 

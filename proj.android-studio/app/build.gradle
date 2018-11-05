@@ -11,8 +11,8 @@ android {
         applicationId "com.mob.moblink.demo"
         minSdkVersion 10
         targetSdkVersion 16
-        versionCode 20205
-        versionName "2.2.5"
+        versionCode 30000
+        versionName "3.0.0"
 
         externalNativeBuild {
             ndkBuild {

@@ -24,11 +24,6 @@ namespace mob
              *  路径参数
              */
             std::string path;
-            
-            /**
-             *  来源参数
-             */
-            std::string source;
 
             C2DXMobLinkScene();
             virtual ~C2DXMobLinkScene();

@@ -8,7 +8,7 @@
 #include "C2DXiOSMobLink.h"
 
 #import <Foundation/Foundation.h>
-#import <MobLink/IMLSDKRestoreDelegate.h>
+#import <MobLinkPro/IMLSDKRestoreDelegate.h>
 
 using namespace mob::moblink;
 

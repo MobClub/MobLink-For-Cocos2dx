@@ -12,8 +12,8 @@
 @interface UIViewController (MLSDKRestore)
 
 /**
- 设定控制器路径
-
+ 设定控制器路径（可选，兼容3.0.0之前版本）
+ 
  @return 控制器路径
  */
 + (NSString *)MLSDKPath;

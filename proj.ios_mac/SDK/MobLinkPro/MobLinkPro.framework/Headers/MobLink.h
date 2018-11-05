@@ -11,15 +11,17 @@
 
 @class MLSDKScene;
 
+typedef void(^MLSDKResultHandler)(NSString *mobid, NSString *domain, NSError *error);
+
 @interface MobLink : NSObject
 
 /**
  获取MobId
- 
+
  @param scene 当前场景信息(即传入您需要还原的场景)
- @param result 回调处理,返回mobid
+ @param resultHandler 回调处理,返回mobid
  */
-+ (void)getMobId:(MLSDKScene *)scene result:(void (^)(NSString *mobid, NSError *error))result;
++ (void)getMobId:(MLSDKScene *)scene result:(MLSDKResultHandler)resultHandler;
 
 /**
  设置场景恢复委托

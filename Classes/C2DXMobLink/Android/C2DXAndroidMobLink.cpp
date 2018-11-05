@@ -14,25 +14,31 @@ void C2DXAndroidMobLink::getMobId(mob::moblink::C2DXMobLinkScene *scene, C2DXGet
     JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink"
             , "getMobID", "(Lcom/mob/moblink/Scene;Lcom/mob/moblink/ActionListener;)V");
 
+    // 创建jave层ActionListener对象
     jobject jListener = newActionListener(env);
+    // 获取对应的c++层对象，以保证java层监听器回调被触发时，能找到c++层相应的回调
     C2DXAndroidActionListener* cxxListener = (C2DXAndroidActionListener*)getCxxObject(env, jListener);
     cxxListener->setGetModIdCallBack(callback);
 
+    // 调用sdk相应方法
     env->CallStaticVoidMethod(mi.classID, mi.methodID, jScene, jListener);
 }
 
 void C2DXAndroidMobLink::setRestoreCallBack(C2DXRestoreSceneResultEvent callback)
 {
+    // 创建jave层RestoreSceneListener对象
     JNIEnv* env = JniHelper::getEnv();
     JniMethodInfo mi;
     JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/cocos2dx/RestoreSceneListener", "newInstance", "()Lcom/mob/moblink/cocos2dx/RestoreSceneListener;");
     jobject javaListener = env->CallStaticObjectMethod(mi.classID, mi.methodID);
 
+    // 获取对应的c++层对象，以保证java层监听器回调被触发时，能找到c++层相应的回调
     C2DXAndroidRestoreSceneListener* cxxListener = (C2DXAndroidRestoreSceneListener*) getCxxObject(env, javaListener);
     cxxListener->setRestoreSceneCallBack(callback);
 
-    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "setRestoreSceneListener", "(Lcom/mob/moblink/RestoreSceneListener;)V");
-    env->CallStaticVoidMethod(mi.classID, mi.methodID, javaListener);
+    jobject jactivity = getAndroidContext(env);
+    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "setActivityDelegate", "(Landroid/app/Activity;Lcom/mob/moblink/SceneRestorable;)V");
+    env->CallStaticVoidMethod(mi.classID, mi.methodID, jactivity, javaListener);
 
     // 防止setRestoreCallBack调用过晚, 导致错过scene
     updateIntent();
@@ -55,9 +61,9 @@ jobject C2DXAndroidMobLink::cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* 
     jfieldID jField = env->GetFieldID(jclazz, "path", "Ljava/lang/String;");
     env->SetObjectField(jScene, jField, jTemp);
 
-    jTemp = env->NewStringUTF(scene->source.c_str());
-    jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
-    env->SetObjectField(jScene, jField, jTemp);
+    // jTemp = env->NewStringUTF(scene->source.c_str());
+    // jField = env->GetFieldID(jclazz, "source", "Ljava/lang/String;");
+    // env->SetObjectField(jScene, jField, jTemp);
 
     jTemp = NULL;
     C2DXDictionary* dict = scene->getCustomParams();
@@ -67,7 +73,19 @@ jobject C2DXAndroidMobLink::cxxScene2JavaScene(C2DXMobLinkScene* scene, JNIEnv* 
     jField = env->GetFieldID(jclazz, "params", "Ljava/util/HashMap;");
     env->SetObjectField(jScene, jField, jTemp);
 
-    log("cxxScene2JavaScene. path: %s, source: %s", scene->path.c_str(), scene->source.c_str());
+    // log("cxxScene2JavaScene. path: %s, source: %s", scene->path.c_str(), scene->source.c_str());
+    // 打印日志
+    log("[moblink-cocos]cxxScene2JavaScene. path: %s", scene->path.c_str());
+
+    log("[moblink-cocos]cxxScene2JavaScene. customParams: ");
+    __Dictionary *customParams = scene->getCustomParams();
+    DictElement *element;
+    CCDICT_FOREACH(customParams, element)
+        {
+            const char *key = element -> getStrKey();
+            __String *obj = (__String*)element -> getObject();
+            log("[moblink-cocos]cxxScene2JavaScene. key = %s, value = %s",key,obj -> getCString());
+        }
 
     return jScene;
 }
@@ -108,13 +126,14 @@ void C2DXAndroidMobLink::updateIntent()
     jobject jIntent = env->CallObjectMethod(jactivity, jmethod);
 
     JniMethodInfo mi;
-    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "updateIntent", "(Landroid/app/Activity;Landroid/content/Intent;)V");
-    env->CallStaticVoidMethod(mi.classID, mi.methodID, jactivity, jIntent);
+    JniHelper::getStaticMethodInfo(mi, "com/mob/moblink/MobLink", "updateNewIntent", "(Landroid/content/Intent;Landroid/app/Activity;)V");
+    env->CallStaticVoidMethod(mi.classID, mi.methodID, jIntent, jactivity);
 }
 
 jint mob::moblink::getCxxObject(JNIEnv *env, jobject jthiz) {
     jclass jthizclass = env->GetObjectClass(jthiz);
     jmethodID method = env->GetMethodID(jthizclass, "getCxxObject", "()I");
     jint result = env->CallIntMethod(jthiz, method);
+    log("[moblink-cocos]getCxxObject. return: %ld", result);
     return result;
 }

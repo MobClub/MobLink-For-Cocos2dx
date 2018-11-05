@@ -59,5 +59,8 @@ dependencies {
 MobSDK {
 //    MobCommons {}
 //    MobTools {}
-    MobLink {}
+    MobLink {
+        uriScheme "mlink://com.mob.moblink.demo"
+        appLinkHost "z.t4m.cn"
+    }
 }
