@@ -13,3 +13,4 @@ captures
 .DS_Store
 local.properties
 .externalNativeBuild
+Classes/.vs/
