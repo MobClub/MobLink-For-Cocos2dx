@@ -4,15 +4,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.mob.sdk'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 26
     buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "com.mob.moblink.demo"
-        minSdkVersion 10
-        targetSdkVersion 16
-        versionCode 30000
-        versionName "3.0.0"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 30001
+        versionName "3.0.1"
 
         externalNativeBuild {
             ndkBuild {
