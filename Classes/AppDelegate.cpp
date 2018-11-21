@@ -175,6 +175,6 @@ void sceneHandler(C2DXMobLinkScene *scene)
         content += key; content += ":"; content += obj->getCString(); content += "\n";
     }
     
-    MessageBox(content.c_str(), "得到场景恢复回调");
+    MessageBox("得到场景恢复回调", content.c_str());
 }
 
