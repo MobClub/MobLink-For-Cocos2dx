@@ -25,6 +25,8 @@ package org.cocos2dx.cpp;
 
 import android.content.Intent;
 
+import com.mob.moblink.MobLink;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 public class AppActivity extends Cocos2dxActivity {
@@ -33,5 +35,7 @@ public class AppActivity extends Cocos2dxActivity {
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		setIntent(intent);
+		// 游戏处于后台时，需要通过该方法触发场景还原
+		MobLink.updateNewIntent(intent, this);
 	}
 }
