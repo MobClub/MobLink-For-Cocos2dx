@@ -36,6 +36,6 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onNewIntent(intent);
 		setIntent(intent);
 		// 游戏处于后台时，需要通过该方法触发场景还原
-		MobLink.updateNewIntent(intent, this);
+		MobLink.updateNewIntent(getIntent(), this);
 	}
 }
