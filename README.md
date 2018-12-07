@@ -41,6 +41,20 @@ $(call import-module, jni)
 
 [http://wiki.mob.com/sdk-moblink-android-2-0-0](http://wiki.mob.com/sdk-moblink-android-2-0-0)
 
+4. 修改AppActivity，重写onNewIntent方法
+
+```
+public class AppActivity extends Cocos2dxActivity {
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        // 游戏处于后台时，需要通过该方法触发场景还原
+        MobLink.updateNewIntent(getIntent(), this);
+    }
+}
+```
 
 ## iOS端接入
 对于iOS,还需要对Xcode项目进行一些配置
