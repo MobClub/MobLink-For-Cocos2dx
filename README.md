@@ -39,7 +39,7 @@ $(call import-module, jni)
 请参考原生Android平台的配置文件中的， 配置AndroidManiFest.xml文件部分
 
 
-[http://wiki.mob.com/sdk-moblink-android-2-0-0](http://wiki.mob.com/sdk-moblink-android-2-0-0)
+[http://wiki.mob.com/moblinkandroidgradle3-x/](http://wiki.mob.com/moblinkandroidgradle3-x/)
 
 4. 修改AppActivity，重写onNewIntent方法
 
