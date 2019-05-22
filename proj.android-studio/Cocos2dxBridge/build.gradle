@@ -8,7 +8,7 @@ android {
     buildToolsVersion findBuildTools()
 
     defaultConfig {
-        minSdkVersion findMinSdk()
+        minSdkVersion 16
         targetSdkVersion findTargetSdk()
         versionCode findVersionCode()
         versionName findVersionName()

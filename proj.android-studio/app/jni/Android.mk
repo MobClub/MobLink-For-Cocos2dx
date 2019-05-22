@@ -2,11 +2,17 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+LOCAL_MODULE := libmoblinkbridge
+LOCAL_SRC_FILES := libmoblinkbridge.a
+LOCAL_EXPORT_C_INCLUDES  := $(LOCAL_PATH)/C2DXMobLinkH
+
+include $(PREBUILT_STATIC_LIBRARY)
+
+include $(CLEAR_VARS)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/external)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos/audio/include)
-$(call import-add-path,$(LOCAL_PATH)/../../Cocos2dxBridge)
 
 LOCAL_MODULE := MyGame_shared
 
@@ -21,11 +27,9 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
-
-LOCAL_WHOLE_STATIC_LIBRARIES := moblink_bridge
+LOCAL_WHOLE_STATIC_LIBRARIES := libmoblinkbridge
 
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
-$(call import-module, jni)
 

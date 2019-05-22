@@ -4,9 +4,7 @@
     android:versionCode="20201"
     android:versionName="2.2.1" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="8" />
+
 
     <application/>
 
