@@ -21,18 +21,25 @@
 
 ## Android端接入
 
-1. 导入Cocos2dxBridge Module到您的项目中（目录proj.android-studio\Cocos2dxBridge）， 并依赖此module。
+1. 拷贝demo项目中C2DXMobLinkH和libmoblinkbridge.a文件到您自己的项目proj.android-studio\app\jni文件夹下（注意清与您Android.mk文件同目录）
 
 2. 在您的Android.mk文件中加入对Cocos2dxBridge module的jni部分(Android.mk文件）的引用，即是引入moblik_bridge静态库。在您的Android.mk文件中添加如下代码： 
-编译需要的cpp源代码(Android.mk)
 
 ```
-$(call import-add-path,$(LOCAL_PATH)/../../Cocos2dxBridge)
-LOCAL_WHOLE_STATIC_LIBRARIES := moblink_bridge
-$(call import-module, jni)
+LOCAL_PATH := $(call my-dir)
+
+#引入预编译编译的.a文件，此libmoblinkbridge.a的abi为 armeabi-v7a，
+#如果需要其他平台的libmoblinkbridge.a文件 可以去proj.android-studio\Cocos2dxBridge\jni 下添加相关的abi文件进行引用
+include $(CLEAR_VARS)
+LOCAL_MODULE := libmoblinkbridge
+LOCAL_SRC_FILES := libmoblinkbridge.a
+LOCAL_EXPORT_C_INCLUDES  := $(LOCAL_PATH)/C2DXMobLinkH
+include $(PREBUILT_STATIC_LIBRARY)
+------
+您自己的mk内容
 ```
 
-如果您不太明白怎么复制这三行配置，可以去参考demo的Android.mk文件。
+如果您不太明白怎么配置，可以去参考demo的Android.mk文件。
 
 3. 配置AndroidManiFest.xml文件
 
