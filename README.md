@@ -36,19 +36,24 @@ LOCAL_SRC_FILES := libmoblinkbridge.a
 LOCAL_EXPORT_C_INCLUDES  := $(LOCAL_PATH)/C2DXMobLinkH
 include $(PREBUILT_STATIC_LIBRARY)
 ------
-您自己的mk内容
+#您自己的mk内容
 ```
 
 如果您不太明白怎么配置，可以去参考demo的Android.mk文件。
-
-3. 配置AndroidManiFest.xml文件
+3.拷贝MobLink-CocosBridge.jar （demo工程的proj.android-studio\app\libs）到您项目的libs下并引用
+```
+dependencies {
+   compile files('libs/MobLink-CocosBridge.jar')
+}
+```
+4. 配置AndroidManiFest.xml文件
 
 请参考原生Android平台的配置文件中的， 配置AndroidManiFest.xml文件部分
 
 
 [http://wiki.mob.com/moblinkandroidgradle3-x/](http://wiki.mob.com/moblinkandroidgradle3-x/)
 
-4. 修改AppActivity，重写onNewIntent方法
+5. 修改AppActivity，重写onNewIntent方法
 
 ```
 public class AppActivity extends Cocos2dxActivity {
