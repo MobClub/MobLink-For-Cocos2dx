@@ -29,7 +29,7 @@
 LOCAL_PATH := $(call my-dir)
 
 #引入预编译编译的.a文件，此libmoblinkbridge.a的abi为 armeabi-v7a，
-#如果需要其他平台的libmoblinkbridge.a文件 可以去proj.android-studio\Cocos2dxBridge\jni 下添加相关的abi文件进行引用
+#如果需要其他平台的libmoblinkbridge.a文件 可以去proj.android-studio\Cocos2dxBridge\jni 下添加相关的abi参数并执行ndk-build生成相应的.a文件。
 include $(CLEAR_VARS)
 LOCAL_MODULE := libmoblinkbridge
 LOCAL_SRC_FILES := libmoblinkbridge.a
