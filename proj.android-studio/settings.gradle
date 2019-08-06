@@ -1,5 +1,0 @@
-include ':libcocos2dx', ":Cocos2dxBridge"
-project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/libcocos2dx')
-
-include ':Cocos2DXForMobLink'
-project(':Cocos2DXForMobLink').projectDir = new File(settingsDir, 'app')
